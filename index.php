@@ -7,9 +7,9 @@
 		$getsymbol = strtoupper($_GET['symbol']);
 		$gettotal = $_GET['total'];
 		$getamount = $_GET['amount'];
-
+		$getcurrency = strtoupper($_GET['currency']);
 		$coins['coins'][$getsymbol];
-		$coins['coins'][$getsymbol]['currency']='EUR';
+		$coins['coins'][$getsymbol]['currency']=$getcurrency;
 		$coins['coins'][$getsymbol]['owned']=$gettotal;
 		$coins['coins'][$getsymbol]['paid']=$getamount;
 
@@ -30,7 +30,9 @@
 	}
 
 	$symbols = implode(",", array_keys($coins['coins']));
-	$prices = file_get_contents("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$symbols&tsyms=EUR");
+	$currencies = implode(",", array_values(array_column($coins['coins'], 'currency')));
+	
+	$prices = file_get_contents("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$symbols&tsyms=$currencies");
 	$priceArray = json_decode($prices,true);
 
 
@@ -142,6 +144,11 @@
 			<td>Paid:</td>
 			<td><input type='text' value='' name='amount' placeholder='xxx.xx' /></td>
 		</tr>
+		<tr>
+			<td>Currency:</td>
+			<td><input type='text' value='' name='currency' placeholder='EUR' /></td>
+		</tr>
+		
 		<tr>
 			<td>&nbsp;</td>
 			<td><input type='submit' value='Add Coin' /><input type='button' value='Cancel' id="cancel" /></td>
