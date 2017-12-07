@@ -83,10 +83,25 @@
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script type="text/javascript">
 		$(function(){
-			$("#addcoin").click(function(){
 
+			$("#addcoin").click(function(){
 				$("#coinform").toggle()
 			})
+
+	    	$("#cancel").click(function(){
+				$("#coinform").toggle()
+	    	})
+
+	    	var timeout = setInterval(portfolio, 20000);    
+			portfolio()
+			
+		})
+
+		
+		function portfolio(){
+
+			$('#holder').load('index.php #portfolio',function(){
+
 			var sum = 0;
     	
 	    	$(".paid").each(function() {
@@ -105,18 +120,16 @@
 	    	
 	    	if(profits>0){
 
-	    		$(".profit").removeClass().addClass("positive")
+	    		$(".profit").removeClass('negative').addClass("positive")
 	    		}else{
-	    		$(".profit").removeClass().addClass("negative")
+	    		$(".profit").removeClass('positive').addClass("negative")
     		
 	    	}
-	    	$(".updown:contains('-')").removeClass().addClass('negative')
-	    	$(".updown").addClass('positive')
-	    	$("#cancel").click(function(){
-				$("#coinform").toggle()
-	    	})
 
-		})
+	    	$(".updown,.change").addClass('positive')
+	    	$(".updown:contains('-'),.change:contains('-')").removeClass('positive').addClass('negative')
+	    	})
+		}
 
 	</script>
 	</head>
@@ -157,7 +170,8 @@
 	<input type="hidden" name='action' value='addcoin'>
 </form>
 </div>
-<table>
+<div id="holder">
+<table id="portfolio">
 	<tr>
 		<th>Coin</th>
 		<th>P/L</th>
@@ -168,19 +182,21 @@
 
 		$currency = strtoupper($value['currency']);
 		$price = round($priceArray['RAW'][$symbol][$currency]['PRICE'],2);
+		$change = round($priceArray['RAW'][$symbol][$currency]['CHANGEPCT24HOUR'],2);
+
 		$difference = round($price*$value['owned'],2);
 		$profit = round($difference-$value['paid'],2);
 		
 		echo "<tr>";
 		echo "<td class='symbol'><a href='index.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".symbol_lookup($symbol) . "</td>"; 
-		echo "<td><span class='updown'>". currencyformat($currency).round($profit,2)."</span><br/>".$value['owned']."<br/><span class='paid'>".  currencyformat($currency).$value['paid'] . "</span></td>";
-		echo "<td>".currencyformat($currency)." ".$price."</td>";
+		echo "<td><span class='updown'>". currencyformat($currency).round($profit,2)."</span><br/><span class='owned'>".$value['owned']."</span><br/><span class='paid'>".  currencyformat($currency).$value['paid'] . "</span></td>";
+		echo "<td>".currencyformat($currency)." ".$price."<br/><span class='change'>". round($change,2)."%</span></td>";
 		echo "</tr>";
 	}
 
 ?>
 </table>
-
+</div>
 </div>
 </body>
 </html>
