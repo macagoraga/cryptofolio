@@ -138,8 +138,8 @@
 				
 				echo "<tr>";
 				echo "<td class='symbol'><a href='index.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".symbol_lookup($symbol) . "</td>"; 
-				echo "<td class='pl'><span class='updown'>". currencyformat($currency).number_format($profit,2)."</span><br/><span class='owned'>".number_format($value['owned'],8)."</span><br/><span class='paid'>".  currencyformat($currency).number_format($value['paid'],2) . "</span></td>";
-				echo "<td class='currentprice'>".currencyformat($currency)." ".number_format($price,2)."<br/><span class='change'>". number_format($change,2)."%</span></td>";
+				echo "<td class='pl'><span class='updown'>". currencyformat($currency).number_format($profit,2, '.', '')."</span><br/><span class='owned'>".number_format($value['owned'],8)."</span><br/><span class='paid'>".  currencyformat($currency).number_format($value['paid'],2, '.', '') . "</span></td>";
+				echo "<td class='currentprice'>".currencyformat($currency)." ".number_format($price,2)."<br/><span class='change'>". number_format($change,2, '.', '')."%</span></td>";
 				echo "<td class='graphtd'><span class='graph'>". graph_data($symbol)."</span></td>";
 				echo "</tr>";
 			}
