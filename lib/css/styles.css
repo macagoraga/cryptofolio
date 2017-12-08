@@ -1,13 +1,13 @@
-body{font-family: 'Helvetica Neue',Arial;background-color: #fff;color: #333;padding:0;margin:0;-webkit-text-size-adjust:none;}
+body{font-family: 'Roboto Mono','Helvetica Neue',Arial,monospace;background-color: #fff;color: #333;padding:0;margin:0;-webkit-text-size-adjust:none;}
 
 h1{padding: 10px;margin:0;background-color: #000;color:#fff;font-size:16px;}
-th{text-align: left;font-size: 11px;padding: 4px 0 8px 4px;}
+th{text-align: left;font-size: 12px;padding: 4px 0 8px 4px;text-transform: uppercase;color: #333}
 tr{border-bottom: 1px solid #ccc;}
 td{font-size: 14px;padding: 10px 20px 10px 8px;vertical-align: top;text-align: left}
 .frame{padding:0;min-width: 320px;margin: 0 auto;display: none}
 table{border-collapse: collapse;padding:0;margin:0 auto;min-width: 320px}
 .graph{height:40px;}
-h2{padding:20px 0;margin:10px 0;font-size:14px;width: 100%;text-align: center;}
+h2{padding:20px 0;margin:10px 0;font-size:14px;width: 100%;text-align: right;}
 .negative{color: #FF4136;}
 .positive{color:#2ECC40;}
 .symbol{text-align: center;font-weight: bold;font-size:11px;width:40px;}
@@ -22,13 +22,16 @@ td span.change{font-size: 11px;}
 .graph{font-size: 11px;color:#fff;}
 .pl,.currentprice{width:100px;}
 .graphtd{width:130px;vertical-align: bottom;padding:4px 0;}
-
+.totals tr.noborder{border:none;}
+.totals{margin: 8px 0 20px 8px;}
 @media screen and (min-width: 580px) {
     body,td,td.span.change,.graph,.symbol,.paid,.owned,td span.change {
        font-size:16px;
     }
     .pl,.currentprice{width:160px;}
     .symbol{width:80px;}
+    .totals{margin: 8px auto 20px auto;}
+    
 }
 /*
 light: #F4F1DE;

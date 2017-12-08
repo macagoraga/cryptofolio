@@ -79,6 +79,7 @@
 	<head>
 		<title>CRYPTOFOLIO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
@@ -87,7 +88,18 @@
 <body>
 	<div class='addcoin'><a href='#' id='addcoin'>+</a></div>
 	<h1>CRYPTOFOLIO</h1>
-	<h2><span id="total"></span><br/><span id="profit"></span><br/><span id="currentvalue"></span></h2>
+	<table class='totals'>
+		<tr>
+			<th>INVESTMENT</th>
+			<th>P/L</th>
+			<th>TOTAL</th>
+		</tr>			
+		<tr class='noborder'>
+			<td><span id="total"></span></td>
+			<td><span id="profit"></span></td>
+			<td><span id="currentvalue"></span></td>
+		</tr>
+	</table>
 
 <div class="frame">
 	<div id="coinform">
