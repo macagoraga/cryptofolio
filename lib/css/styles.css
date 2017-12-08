@@ -23,6 +23,13 @@ td span.change{font-size: 11px;}
 .pl,.currentprice{width:100px;}
 .graphtd{width:130px;vertical-align: bottom;padding:4px 0;}
 
+@media screen and (min-width: 580px) {
+    body,td,td.span.change,.graph,.symbol,.paid,.owned,td span.change {
+       font-size:16px;
+    }
+    .pl,.currentprice{width:160px;}
+    .symbol{width:80px;}
+}
 /*
 light: #F4F1DE;
 red: #E07A5F;
