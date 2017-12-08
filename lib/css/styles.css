@@ -1,22 +1,28 @@
-body{font-family: 'Helvetica Neue',Arial;background-color: #fff;color: #333;padding:0;margin:0;}
+body{font-family: 'Helvetica Neue',Arial;background-color: #fff;color: #333;padding:0;margin:0;-webkit-text-size-adjust:none;}
 
 h1{padding: 10px;margin:0;background-color: #000;color:#fff;font-size:16px;}
-th{text-align: left;font-size: 11px;padding: 4px 20px 4px 8px;}
-tr{border-bottom: 1px solid #333;}
-td{font-size: 16px;padding: 4px 20px 4px 8px;vertical-align: top;text-align: left}
-.frame{padding:0;}
-table{border-collapse: collapse;margin:0;padding:0;width:100%;}
+th{text-align: left;font-size: 11px;padding: 4px 0 8px 4px;}
+tr{border-bottom: 1px solid #ccc;}
+td{font-size: 14px;padding: 10px 20px 10px 8px;vertical-align: top;text-align: left}
+.frame{padding:0;min-width: 320px;margin: 0 auto;display: none}
+table{border-collapse: collapse;padding:0;margin:0 auto;min-width: 320px}
 .graph{height:40px;}
-h2{padding:0 10px;margin:10px 0;font-size:14px;}
+h2{padding:20px 0;margin:10px 0;font-size:14px;width: 100%;text-align: center;}
 .negative{color: #FF4136;}
 .positive{color:#2ECC40;}
-.symbol{text-align: center;font-weight: bold}
-.paid{color:#999;}
+.symbol{text-align: center;font-weight: bold;font-size:11px;width:40px;}
+.symbol img{margin-bottom: 4px}
+.paid,.owned{color:#999;font-size: 11px;}
 .addcoin{position: absolute;right:20px;top:-8px;color: #fff;font-size: 40px;}
 #addcoin{color: #fff;text-decoration: none;}
 input{font-size: 16px}
 #coinform{display: none;}
 a{text-decoration: none;color: #000}
+td span.change{font-size: 11px;}
+.graph{font-size: 11px;color:#fff;}
+.pl,.currentprice{width:100px;}
+.graphtd{width:130px;vertical-align: bottom;padding:4px 0;}
+
 /*
 light: #F4F1DE;
 red: #E07A5F;
