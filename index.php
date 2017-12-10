@@ -8,12 +8,12 @@ $coins = json_decode( $string, true );
 	<head>
 		<title>CRYPTOFOLIO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="lib/css/dygraphs.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Mono" >
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css" >
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
-		<script src="lib/js/dygraphs.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+		<script src="lib/js/c3.min.js"></script>
 		<script src="lib/js/jquery.color.min.js"></script>
 		<script src="lib/js/script.js"></script>
 	</head>

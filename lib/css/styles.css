@@ -50,9 +50,6 @@ table {
     padding: 0;
 }
 
-.graph {
-    height: 40px;
-}
 
 h2 {
     font-size: 14px;
@@ -120,13 +117,10 @@ button{
     padding: 2px 4px;
     background-color: #fff;
 }
-#selectors{
+.selectors{
     cursor: default;
-    bo
-    
-
 }
-#selectors td{
+.selectors td{
     padding:4px 0 20px 0;
     text-align: right;
 }
@@ -140,19 +134,13 @@ button{
 .totals tr.noborder {
     border: none;
 }
-.totals td{text-align: center;}
-#graph{border:none;}
-#graph td{padding:20px 0;margin:0;}
 
-#graph div.dygraph-legend{
-    font-size: 11px;
-     width: 100px;
-        background-color: transparent !important;
-        left: 80px !important;
-}
-.dygraph-axis-label.dygraph-axis-label-y,.dygraph-axis-label.dygraph-axis-label-x{
-    font-size: 11px !important;
-}
+
+.totals td{text-align: center;}
+.graph{border:none;}
+.graph td{padding:20px 0;margin:0;}
+span.label{font-size: 11px;color:#333;}
+
 .totals {
     margin: 40px auto 40px auto;
 }
