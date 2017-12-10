@@ -154,7 +154,7 @@ button{
     font-size: 11px !important;
 }
 .totals {
-    margin: 8px auto 20px auto;
+    margin: 40px auto 40px auto;
 }
 @media screen and (max-width: 580px) {
     body,
