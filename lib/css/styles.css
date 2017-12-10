@@ -1,42 +1,197 @@
-body{font-family: 'Roboto Mono','Helvetica Neue',Arial,monospace;background-color: #fff;color: #333;padding:0;margin:0;-webkit-text-size-adjust:none;}
 
-h1{padding: 10px;margin:0;background-color: #000;color:#fff;font-size:16px;}
-th{text-align: left;font-size: 12px;padding: 4px 0 8px 4px;text-transform: uppercase;color: #333}
-tr{border-bottom: 1px solid #ccc;}
-td{font-size: 14px;padding: 10px 20px 10px 8px;vertical-align: top;text-align: left}
-.frame{padding:0;min-width: 320px;margin: 0 auto;display: none}
-table{border-collapse: collapse;padding:0;margin:0 auto;min-width: 320px}
-.graph{height:40px;}
-h2{padding:20px 0;margin:10px 0;font-size:14px;width: 100%;text-align: right;}
-.negative{color: #FF4136;}
-.positive{color:#2ECC40;}
-.symbol{text-align: center;font-weight: bold;font-size:11px;width:40px;}
-.symbol img{margin-bottom: 4px}
-.paid,.owned{color:#999;font-size: 11px;}
-.addcoin{position: absolute;right:20px;top:-8px;color: #fff;font-size: 40px;}
-#addcoin{color: #fff;text-decoration: none;}
-input{font-size: 16px}
-#coinform{display: none;}
-a{text-decoration: none;color: #000}
-td span.change{font-size: 11px;}
-.graph{font-size: 11px;color:#fff;}
-.pl,.currentprice{width:100px;}
-.graphtd{width:130px;vertical-align: bottom;padding:4px 0;}
-.totals tr.noborder{border:none;}
-.totals{margin: 8px 0 20px 8px;}
-@media screen and (min-width: 580px) {
-    body,td,td.span.change,.graph,.symbol,.paid,.owned,td span.change {
-       font-size:16px;
-    }
-    .pl,.currentprice{width:160px;}
-    .symbol{width:80px;}
-    .totals{margin: 8px auto 20px auto;}
-    
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: 'Roboto Mono', 'Helvetica Neue', Arial, monospace;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
 }
-/*
-light: #F4F1DE;
-red: #E07A5F;
-dark: #3D405B;
-green: #81B29A;
-yellow: #F2CC8F;
- */
+
+h1 {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+}
+
+th {
+    color: #333;
+    font-size: 12px;
+    padding: 4px 0 8px 4px;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+tr {
+    border-bottom: 1px solid #e5e5e5;
+    cursor: pointer;
+}
+
+td {
+    font-size: 16px;
+    padding: 20px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.frame {
+    margin: 0 auto;
+    min-width: 320px;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width:580px;
+    padding: 0;
+}
+
+.graph {
+    height: 40px;
+}
+
+h2 {
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 20px 0;
+    text-align: right;
+    width: 100%;
+}
+
+.negative {
+    color: #F1414A;
+}
+
+.positive {
+    color: #80BD72;
+}
+
+.symbol {
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+   
+}
+td.symbolname{}
+
+.symbol img {
+    height: 20px;
+}
+
+.paid,
+.owned {
+    color: #999;
+    font-size: 11px;
+    display: none;
+}
+
+.addcoin {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    right: 20px;
+    top: -8px;
+}
+
+#addcoin {
+    color: #fff;
+    text-decoration: none;
+}
+
+input {
+    font-size: 16px;
+}
+
+#coinform {
+    display: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+button{
+    cursor: pointer;
+    border: 1px solid #999;
+    padding: 2px 4px;
+    background-color: #fff;
+}
+#selectors{
+    cursor: default;
+    bo
+    
+
+}
+#selectors td{
+    padding:4px 0 20px 0;
+    text-align: right;
+}
+.pl,
+.currentprice, td.tdchange {
+    vertical-align: middle;
+    text-align: right;
+}
+
+
+.totals tr.noborder {
+    border: none;
+}
+.totals td{text-align: center;}
+#graph{border:none;}
+#graph td{padding:20px 0;margin:0;}
+
+#graph div.dygraph-legend{
+    font-size: 11px;
+     width: 100px;
+        background-color: transparent !important;
+        left: 80px !important;
+}
+.dygraph-axis-label.dygraph-axis-label-y,.dygraph-axis-label.dygraph-axis-label-x{
+    font-size: 11px !important;
+}
+.totals {
+    margin: 8px auto 20px auto;
+}
+@media screen and (max-width: 580px) {
+    body,
+    td,
+    td.span.change,
+    .graph,
+    .symbol,
+    .paid,
+    .owned,
+    td span.change {
+       font-size: 14px;
+    }
+    td{padding:8px;}
+    .pl,
+    .currentprice {
+      
+    }
+    table{width:100%;}
+    .symbol {
+      
+    }
+    .totals {
+        margin: 8px auto 20px auto;
+    }
+}
+
+
+/* light: #F4F1DE; */
+
+
+/* red: #E07A5F; */
+
+
+/* dark: #3D405B; */
+
+
+/* green: #81B29A; */
+
+
+/* yellow: #F2CC8F; */

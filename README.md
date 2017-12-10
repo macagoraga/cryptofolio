@@ -1,9 +1,9 @@
 # Simple cryptocurrency portfolio in PHP
 
-### install
-portfolio.json needs to be writable by the webserver
+### Requirements
+lib/data needs to be writable by the webserver to cache images and to write portfolio.json
 
-`chmod +x on lib/data/portfolio.json`
+`chmod 766 lib/data/`
 
 
 
