@@ -136,7 +136,7 @@ button{
     text-align: right;
 }
 
-
+#holder{display: none;}
 .totals tr.noborder {
     border: none;
 }

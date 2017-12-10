@@ -14,6 +14,7 @@ $coins = json_decode( $string, true );
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
 		<script src="lib/js/dygraphs.min.js"></script>
+		<script src="lib/js/jquery.color.min.js"></script>
 		<script src="lib/js/script.js"></script>
 	</head>
 <body>
@@ -34,7 +35,7 @@ $coins = json_decode( $string, true );
 
 <div class="frame">
 	<div id="coinform">
-		<form action="index.php" method="get">
+		<form action="portfolio.php" method="get">
 			<h1>Add Coin</h1>
 			<table>
 				<tr>
@@ -71,7 +72,7 @@ $coins = json_decode( $string, true );
 			foreach ($coins['coins'] as $symbol => $value) {
 				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
 				echo "<td class='symbol'>".PHP_EOL;
-				echo "<a href='index.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;
+				echo "<a href='portfolio.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;
 				echo "<img class='imgholder' src='#' />".PHP_EOL;
 				echo "</a></td>".PHP_EOL;
 				echo "<td class='symbolname'><span class='symbolholder'>".$symbol."</span>".PHP_EOL;
