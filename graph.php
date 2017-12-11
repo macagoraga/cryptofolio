@@ -23,7 +23,7 @@ date_default_timezone_set('Europe/London');
     	
     	$ts = date("Y-m-d H:i:s",$value['time']);
 
-       $grapharray[] = array("TIMESTAMP"=>$ts, "OPEN"=>$value['open'], "CLOSE"=>$value['close'], "HIGH"=>$value['high'],"LOW"=>$value['low']);
+       $grapharray[] = array("TIMESTAMP"=>$ts, "OPEN"=>$value['open'], "CLOSE"=>$value['close'], "HIGH"=>$value['high'],"LOW"=>$value['low'], "VOLUME"=>$value['volumeto']);
     }
     echo json_encode($grapharray);
 ?>

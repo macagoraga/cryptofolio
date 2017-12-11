@@ -2,7 +2,7 @@
 
 $string = file_get_contents( "lib/data/portfolio.json", true );
 $coins = json_decode( $string, true );
-
+ksort($coins['coins']);
 ?>
 <html>
 	<head>
@@ -10,11 +10,13 @@ $coins = json_decode( $string, true );
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Mono" >
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
-		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css" >
+		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/css/datepicker.min.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 		<script src="lib/js/c3.min.js"></script>
 		<script src="lib/js/jquery.color.min.js"></script>
+		<script src="lib/js/datepicker.min.js"></script>
 		<script src="lib/js/script.js"></script>
 	</head>
 <body>
@@ -34,40 +36,12 @@ $coins = json_decode( $string, true );
 	</table>
 
 <div class="frame">
-	<div id="coinform">
-		<form action="portfolio.php" method="get">
-			<h1>Add Coin</h1>
-			<table>
-				<tr>
-					<td>Coin:</td>
-					<td><input type='text' value='' name='symbol' placeholder='Enter Symbol'/></td>
-				</tr>
-				<tr>
-					<td>Total:</td>
-					<td><input type='text' value='' name='total' placeholder='Number of coins' /></td>
-				</tr>
-				<tr>
-					<td>Paid:</td>
-					<td><input type='text' value='' name='amount' placeholder='xxx.xx' /></td>
-				</tr>
-				<tr>
-					<td>Currency:</td>
-					<td><input type='text' value='' name='currency' placeholder='EUR' /></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><input type='submit' value='Add Coin' /><input type='button' value='Cancel' id="cancel" /></td>
-				</tr>
-			</table>
-			<input type="hidden" name='action' value='addcoin'>
-		</form>
-	</div>
 	<div id="holder">
-		<table>
-			<th colspan=2>coin</th>
-			<th>price</th>
-			<th>24hrs</th>
-			<th>P/L</th>
+		<table id="sorttable">
+			<th colspan=2 onclick="sortTable(0)">coin</th>
+			<th onclick="sortTable(1)">price</th>
+			<th onclick="sortTable(2)">24hrs</th>
+			<th onclick="sortTable(3)">P/L</th>
 			<?php
 			foreach ($coins['coins'] as $symbol => $value) {
 				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
@@ -89,5 +63,36 @@ $coins = json_decode( $string, true );
 		</table>
 	</div>
 </div>
+<div id="coinform">
+		<form action="portfolio.php" method="get">
+			<h1>Add Coin</h1>
+			<table>
+				<tr>
+					<td>Coin:</td>
+					<td><input type='text' value='' name='symbol' placeholder='Enter Symbol'/></td>
+				</tr>
+				<tr>
+					<td>Total:</td>
+					<td><input type='text' value='' name='total' placeholder='Number of coins' /></td>
+				</tr>
+				<tr>
+					<td>Paid:</td>
+					<td><input type='text' value='' name='amount' placeholder='xxx.xx' /><select name='currency'><option value="EUR" selected>EUR</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></td>
+				</tr>
+				<tr>
+					<td>Acquired on:</td>
+					<td>
+						<input data-toggle="datepicker" placeholder='Select Date' name='buydate'>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type='submit' value='Add Coin' /><input type='button' value='Cancel' id="cancel" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name='action' value='addcoin'>
+		</form>
+	</div>
+
 </body>
 </html>

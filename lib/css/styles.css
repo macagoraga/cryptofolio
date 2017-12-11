@@ -39,6 +39,7 @@ td {
 }
 
 .frame {
+    position: relative;
     margin: 0 auto;
     min-width: 320px;
     padding: 0;
@@ -93,7 +94,7 @@ td.symbolname{}
     right: 20px;
     top: -8px;
 }
-
+select{padding:2px 4px;font-size: 16px}
 #addcoin {
     color: #fff;
     text-decoration: none;
@@ -105,8 +106,22 @@ input {
 
 #coinform {
     display: none;
-}
+   position: absolute;
 
+   top:50%;
+   left:50%;
+   margin: 0;
+    width: 500px;
+    border: 1px solid #999;
+    padding: 10px;
+   
+    background-color: #eee;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+
+}
+#coinform td{padding: 8px}
+#coinform tr{border:none;}
 a {
     color: #000;
     text-decoration: none;
@@ -121,7 +136,7 @@ button{
     cursor: default;
 }
 .selectors td{
-    padding:4px 0 20px 0;
+    padding:20px 0 20px 0;
     text-align: right;
 }
 .pl,
