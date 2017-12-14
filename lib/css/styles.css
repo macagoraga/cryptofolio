@@ -1,16 +1,16 @@
-
-
 body {
     background-color: #fff;
-    color: #333;
+    color: #101010;
     font-family: 'Roboto Mono', 'Helvetica Neue', Arial, monospace;
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
 }
 
+
+
 h1 {
-    background-color: #000;
+    background-color: #101010;
     color: #fff;
     font-size: 16px;
     margin: 0;
@@ -18,12 +18,12 @@ h1 {
 }
 
 th {
-    color: #333;
+    color: #999;
+    font-weight: normal;
     font-size: 12px;
     padding: 4px 0 8px 4px;
     text-align: center;
     text-transform: uppercase;
-
 }
 
 tr {
@@ -44,13 +44,14 @@ td {
     min-width: 320px;
     padding: 0;
 }
+
 table {
     border-collapse: collapse;
     margin: 0 auto;
-    width:580px;
+    width: 750px;
     padding: 0;
 }
-
+#coinform table{width:430px;}
 
 h2 {
     font-size: 14px;
@@ -72,32 +73,40 @@ h2 {
     font-size: 11px;
     font-weight: bold;
     text-align: center;
-   
 }
-td.symbolname{}
+
+td.symbolname {
+}
 
 .symbol img {
     height: 20px;
 }
 
-.paid,
-.owned {
+.paid, .owned {
     color: #999;
     font-size: 11px;
     display: none;
 }
 
-.addcoin {
-    color: #fff;
-    font-size: 40px;
-    position: absolute;
-    right: 20px;
-    top: -8px;
+
+select {
+    padding: 2px 4px;
+    font-size: 16px
 }
-select{padding:2px 4px;font-size: 16px}
-#addcoin {
+.menu{
+    position: absolute;
+    right:12px;
+    top:4px;
+}
+.menu a{
     color: #fff;
+    font-size: 24px;
+
+}
+#addcoin {
+  color: #fff;
     text-decoration: none;
+
 }
 
 input {
@@ -106,60 +115,113 @@ input {
 
 #coinform {
     display: none;
-   position: absolute;
-
-   top:50%;
-   left:50%;
-   margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
     width: 500px;
     border: 1px solid #999;
     padding: 10px;
-   
     background-color: #eee;
     border-radius: 5px;
     transform: translate(-50%, -50%);
-
+    color: #333;
 }
-#coinform td{padding: 8px}
-#coinform tr{border:none;}
+.datepicker-container{color: #333;}
+#coinform td {
+    padding: 8px
+}
+
+#coinform tr {
+    border: none;
+}
+
 a {
     color: #000;
     text-decoration: none;
 }
-button{
+
+button {
     cursor: pointer;
     border: 1px solid #999;
     padding: 2px 4px;
     background-color: #fff;
 }
-.selectors{
+
+.selectors {
     cursor: default;
 }
-.selectors td{
-    padding:20px 0 20px 0;
+
+.selectors td {
+    padding: 20px 0 20px 0;
     text-align: right;
 }
-.pl,
-.currentprice, td.tdchange {
+
+.pl, .currentprice, td.tdchange {
     vertical-align: middle;
     text-align: right;
 }
 
-#holder{display: none;}
+#holder {
+    display: none;
+}
+
 .totals tr.noborder {
     border: none;
 }
 
+.totals td {
+    text-align: center;
+}
 
-.totals td{text-align: center;}
-.graph{border:none;}
-.graph td{padding:20px 0;margin:0;}
-span.label{font-size: 11px;color:#333;}
+.graph {
+    border: none;
+}
+
+.graph td {
+    padding: 20px 0;
+    margin: 0;
+}
+
+span.label {
+    font-size: 11px;
+    color: #333;
+}
 
 .totals {
     margin: 40px auto 40px auto;
 }
-@media screen and (max-width: 580px) {
+.c3 .c3-axis-x path,
+.c3 .c3-axis-x line,
+.c3 .c3-axis-y path,
+.c3 .c3-axis-y line {
+    stroke: #101010;
+}
+
+.c3 .c3-axis-x g,
+.c3 .c3-axis-y g,
+.c3 .c3-legend-item-data text {
+    fill: #1010101;
+}
+#graph .c3-legend-item{color:#333;}
+
+
+.darkmode{color:#eee;}
+.darkbackground{background-color: #101010}
+.darkmodetr{border-color: #333;}
+.darkmodebutton{border-color: #999;background-color: #333;color: #eee}
+#graph.c3.darkmodegraph .c3-axis-x g, 
+#graph.c3.darkmodegraph .c3-axis-y g text,
+#graph.c3.darkmodegraph g text{ fill:#eee; }
+#graph.c3.darkmodegraph .c3-axis-x path,
+#graph.c3.darkmodegraph .c3-axis-x line,
+#graph.c3.darkmodegraph .c3-axis-y path,
+#graph.c3.darkmodegraph .c3-axis-y line {
+    stroke: #eee;
+}
+
+
+@media screen and (max-width:750px) {
     body,
     td,
     td.span.change,
@@ -168,33 +230,34 @@ span.label{font-size: 11px;color:#333;}
     .paid,
     .owned,
     td span.change {
-       font-size: 14px;
+        font-size: 14px;
     }
-    td{padding:8px;}
-    .pl,
-    .currentprice {
-      
+    td {
+        padding: 8px;
     }
-    table{width:100%;}
+
+    .pl, .currentprice {
+    }
+
+    table {
+        width: 100%;
+    }
+
     .symbol {
-      
     }
+
     .totals {
         margin: 8px auto 20px auto;
     }
-}
 
+}
 
 /* light: #F4F1DE; */
 
-
 /* red: #E07A5F; */
-
 
 /* dark: #3D405B; */
 
-
 /* green: #81B29A; */
-
 
 /* yellow: #F2CC8F; */

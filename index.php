@@ -10,17 +10,27 @@ ksort($coins['coins']);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Mono" >
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css">
 		<link rel="stylesheet" type="text/css" href="lib/css/datepicker.min.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 		<script src="lib/js/c3.min.js"></script>
 		<script src="lib/js/jquery.color.min.js"></script>
+		<script src="lib/js/jquery.cookie.js"></script>
 		<script src="lib/js/datepicker.min.js"></script>
 		<script src="lib/js/script.js"></script>
 	</head>
 <body>
-	<div class='addcoin'><a href='#' id='addcoin'>+</a></div>
+	<div class='menu'>
+		<a href="#" id="switchtheme">
+			<i class="fa fa-adjust" aria-hidden="true"></i>
+		</a>
+		<a href='#' id='addcoin'>
+			<i class="fa fa-plus-circle" aria-hidden="true"></i>
+		</a>
+	
+	</div>
 	<h1>CRYPTOFOLIO</h1>
 	<table class='totals'>
 		<tr>
@@ -37,11 +47,11 @@ ksort($coins['coins']);
 
 <div class="frame">
 	<div id="holder">
-		<table id="sorttable">
-			<th colspan=2 onclick="sortTable(0)">coin</th>
-			<th onclick="sortTable(1)">price</th>
-			<th onclick="sortTable(2)">24hrs</th>
-			<th onclick="sortTable(3)">P/L</th>
+		<table>
+			<th colspan=2>coin</th>
+			<th>price</th>
+			<th>24hrs</th>
+			<th>P/L</th>
 			<?php
 			foreach ($coins['coins'] as $symbol => $value) {
 				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
@@ -49,7 +59,7 @@ ksort($coins['coins']);
 				echo "<a href='portfolio.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;
 				echo "<img class='imgholder' src='#' />".PHP_EOL;
 				echo "</a></td>".PHP_EOL;
-				echo "<td class='symbolname'><span class='symbolholder'>".$symbol."</span>".PHP_EOL;
+				echo "<td class='symbolname'><span class='symbolholder'>".$value['name']." (".$symbol .")</span>".PHP_EOL;
 				echo "<td class='currentprice'><span class='price'></span><br/>".PHP_EOL;
 				echo "<td class='tdchange'><span class='change'></span></td>".PHP_EOL;
 				echo "<td class='pl'>".PHP_EOL;
@@ -93,6 +103,6 @@ ksort($coins['coins']);
 			<input type="hidden" name='action' value='addcoin'>
 		</form>
 	</div>
-
+	<script>document.write('<script src="http://10.0.0.17:35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

@@ -1,10 +1,15 @@
 <?php
 include_once 'functions.php';
-// load portfolio	
+
 $string = file_get_contents("lib/data/portfolio.json", true);
 $coins = json_decode($string, true);
+
+
 if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addcoin')
-{
+{   
+    $allcoins = file_get_contents("https://www.cryptocompare.com/api/data/coinlist/");
+    $coinnames = json_decode($allcoins, true);
+
     $getsymbol = strtoupper($_GET['symbol']);
     $gettotal = $_GET['total'];
     $getamount = $_GET['amount'];
@@ -25,6 +30,8 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     }
     
     $coins['coins'][$getsymbol];
+    $coins['coins'][$getsymbol]['name'] = $coinnames['Data'][$getsymbol]['CoinName'];
+    $coins['coins'][$getsymbol]['fullname'] = $coinnames['Data'][$getsymbol]['FullName'];
     $coins['coins'][$getsymbol]['currency'] = 'EUR';
     $coins['coins'][$getsymbol]['owned'] = $gettotal;
     $coins['coins'][$getsymbol]['paid'] = number_format($totalPriceInEur,2,'.', '');
@@ -56,6 +63,7 @@ $output = array();
 foreach ($coins['coins'] as $symbol => $value){
 
     $currency = strtoupper($value['currency']);
+    $coinname = $value['name'];
     $price = round($priceArray['RAW'][$symbol][$currency]['PRICE'],2);
     $change = round($priceArray['RAW'][$symbol][$currency]['CHANGEPCT24HOUR'],2);
     $difference = round($price*$value['owned'],2);
