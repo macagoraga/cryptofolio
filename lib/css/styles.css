@@ -183,11 +183,11 @@ button {
     margin: 0;
 }
 
-span.label {
+.label {
     font-size: 11px;
     color: #333;
 }
-
+.darklabel{color:#eee;}
 .totals {
     margin: 40px auto 40px auto;
 }
