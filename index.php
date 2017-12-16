@@ -107,6 +107,5 @@ ksort($coins['coins']);
 			<input type="hidden" name='action' value='addcoin'>
 		</form>
 	</div>
-	<script>document.write('<script src="http://10.0.0.17:35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
