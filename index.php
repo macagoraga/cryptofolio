@@ -7,6 +7,10 @@ ksort($coins['coins']);
 <html>
 	<head>
 		<title>CRYPTOFOLIO</title>
+		<link rel="apple-touch-startup-image" href="lib/images/launch.png">
+		<link rel="apple-touch-icon" href="lib/images/touch-icon-iphone.png" />
+		<meta name="apple-mobile-web-app-title" content="Cryptofolio">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Mono" >
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
@@ -40,8 +44,8 @@ ksort($coins['coins']);
 		</tr> 
 		<tr class='noborder'>
 			<td><span id="total"></span></td>
-			<td><span id="profit"></span>&nbsp;<span id="profitpct"></span></td>
-			<td><span id="currentvalue"></span></td>
+			<td><span id="profit"></span>&nbsp;<span id="profitPercent"></span></td>
+			<td><span id="totalValue"></span></td>
 		</tr>
 	</table>
  
@@ -103,5 +107,6 @@ ksort($coins['coins']);
 			<input type="hidden" name='action' value='addcoin'>
 		</form>
 	</div>
+	<script>document.write('<script src="http://10.0.0.17:35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
