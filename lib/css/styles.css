@@ -141,6 +141,8 @@ input {
     color: #333;
 }
 
+tr.info td{padding:8px 0 8px 0;font-size: 12px;text-align: center;color:#eee;}
+tr.info .darkmode{color: #333;}
 .datepicker-container {
     color: #333;
 }
@@ -243,6 +245,7 @@ button {
 
 .darkmodetr {
     border-color: #333;
+    color: #eee;
 }
 
 .darkmodebutton {
@@ -258,6 +261,7 @@ button {
 #graph.c3.darkmodegraph .c3-axis-x path, #graph.c3.darkmodegraph .c3-axis-x line, #graph.c3.darkmodegraph .c3-axis-y path, #graph.c3.darkmodegraph .c3-axis-y line {
     stroke: #eee;
 }
+#graph .c3-grid line{stroke: #333;}
 
 @media screen and (max-width:750px) {
     #profitPercent{font-size:12px;}
@@ -269,28 +273,15 @@ button {
     th, td {
         padding: 8px 20px 8px 8px;
     }
-
-    .pl, .currentprice {
-    }
-
+    
     table {
         width: 100%;
-    }
-
-    .symbol {
     }
 
     .totals {
         margin: 8px auto 20px auto;
     }
 
-    .symbolholdersmall {
-        display: block;
-    }
-
-    .symbolholder {
-        display: none;
-    }
 
 }
 
