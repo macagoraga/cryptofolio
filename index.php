@@ -37,21 +37,20 @@ ksort($coins['coins']);
 			<th>INVESTMENT</th>
 			<th>P/L</th>
 			<th>TOTAL</th>
-		</tr>
+		</tr> 
 		<tr class='noborder'>
 			<td><span id="total"></span></td>
-			<td><span id="profit"></span><span id="profitpct"></span></td>
+			<td><span id="profit"></span>&nbsp;<span id="profitpct"></span></td>
 			<td><span id="currentvalue"></span></td>
 		</tr>
 	</table>
-
+ 
 <div class="frame">
-	<div id="holder">
-		<table>
-			<th colspan=2>coin</th>
-			<th>price</th>
-			<th>24hrs</th>
-			<th>P/L</th>
+	<div id="holder"> 
+		<table> 
+			<th colspan=2 class='thcoin'>coin</th>
+			<th class='thprice'>price</th>
+			<th class='thpl'>P/L</th>
 			<?php
 			foreach ($coins['coins'] as $symbol => $value) {
 				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
@@ -59,11 +58,12 @@ ksort($coins['coins']);
 				echo "<a href='portfolio.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;
 				echo "<img class='imgholder' src='#' />".PHP_EOL;
 				echo "</a></td>".PHP_EOL;
-				echo "<td class='symbolname'><span class='symbolholder'>".$value['name']." (".$symbol .")</span>".PHP_EOL;
+				echo "<td class='symbolname'><span class='symbolholdersmall'>".$symbol ."</span><span class='symbolholder'>".$value['name']." (".$symbol .")</span>".PHP_EOL;
 				echo "<td class='currentprice'><span class='price'></span><br/>".PHP_EOL;
-				echo "<td class='tdchange'><span class='change'></span></td>".PHP_EOL;
+				echo "<span class='change'></span></td>".PHP_EOL;
 				echo "<td class='pl'>".PHP_EOL;
-				echo "<span class='updown'></span>".PHP_EOL;
+				echo "<span class='updown'></span><br/>".PHP_EOL;
+				echo "<span class='updownpct'></span><br/>".PHP_EOL;
 				echo "<span class='owned'>". $value['owned'] . "</span>".PHP_EOL;
 				echo "<span class='paid'>". $value['paid'] . "</span>".PHP_EOL;
 				echo "</td>".PHP_EOL;
@@ -103,6 +103,5 @@ ksort($coins['coins']);
 			<input type="hidden" name='action' value='addcoin'>
 		</form>
 	</div>
-	
 </body>
 </html>
