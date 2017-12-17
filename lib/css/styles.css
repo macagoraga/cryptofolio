@@ -58,7 +58,7 @@ td {
 table {
     border-collapse: collapse;
     margin: 0 auto;
-    width: 700px;
+    width: 650px;
     padding: 0;
 }
 
@@ -124,6 +124,7 @@ select {
 
 input {
     font-size: 16px;
+    width:120px;
 }
 
 #coinform {
@@ -263,7 +264,7 @@ button {
 }
 #graph .c3-grid line{stroke: #333;}
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:650px) {
     #profitPercent{font-size:12px;}
 
     body, td, td.span.change, .graph, .symbol, .paid, .owned, td span.change {
@@ -282,7 +283,16 @@ button {
         margin: 8px auto 20px auto;
     }
 
+    .symbolholdersmall {
+        display: block;
+    }
 
+    .symbolholder {
+        display: none;
+    }
+    #coinform{
+        width:95%;
+    }
 }
 
 /* light: #F4F1DE; */
