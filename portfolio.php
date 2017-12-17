@@ -10,32 +10,33 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     $allcoins = file_get_contents("https://www.cryptocompare.com/api/data/coinlist/");
     $coinnames = json_decode($allcoins, true);
 
-    $getsymbol = strtoupper($_GET['symbol']);
-    $gettotal = $_GET['total'];
-    $getamount = $_GET['amount'];
-    $getcurrency = $_GET['currency'];
-    $getbuydate = $_GET['buydate'];
+    $getSymbol = strtoupper($_GET['symbol']);
+    $totalCoins = $_GET['total'];
+    $amountPaid = $_GET['amount'];
+    $getCurrency = $_GET['currency'];
     $timestamp = strtotime($_GET['buydate']);
 
     // retrieve price in currency at buy date and calculate total amount back to EUR
-    if($getcurrency!="EUR"){
-        echo "not EUR";
-        $prices = file_get_contents("https://min-api.cryptocompare.com/data/pricehistorical?fsym=$getcurrency&tsyms=EUR&ts=$timestamp");
+    if($getCurrency!="EUR"){
+
+        $prices = file_get_contents("https://min-api.cryptocompare.com/data/pricehistorical?fsym=$getCurrency&tsyms=EUR&ts=$timestamp");
         $price = json_decode($prices, true);
-        $priceInEur = $price[$getcurrency]['EUR'];
-        $totalPriceInEur = (($priceInEur*$getamount)*$gettotal);
+        $btcPriceInEur = $price[$getCurrency]['EUR'];
+        $totalPriceInEur = ($btcPriceInEur*$amountPaid);
+    
+
     }
     else{
-        $totalPriceInEur =  $getamount; 
+        $totalPriceInEur =  $amountPaid; 
     }
     
-    $coins['coins'][$getsymbol];
-    $coins['coins'][$getsymbol]['name'] = $coinnames['Data'][$getsymbol]['CoinName'];
-    $coins['coins'][$getsymbol]['fullname'] = $coinnames['Data'][$getsymbol]['FullName'];
-    $coins['coins'][$getsymbol]['currency'] = 'EUR';
-    $coins['coins'][$getsymbol]['owned'] = $gettotal;
-    $coins['coins'][$getsymbol]['paid'] = number_format($totalPriceInEur,2,'.', '');
-    $coins['coins'][$getsymbol]['buydate'] = $timestamp;
+    $coins['coins'][$getSymbol];
+    $coins['coins'][$getSymbol]['name'] = $coinnames['Data'][$getSymbol]['CoinName'];
+    $coins['coins'][$getSymbol]['fullname'] = $coinnames['Data'][$getSymbol]['FullName'];
+    $coins['coins'][$getSymbol]['currency'] = 'EUR';
+    $coins['coins'][$getSymbol]['owned'] = $totalCoins;
+    $coins['coins'][$getSymbol]['paid'] = $totalPriceInEur;
+    $coins['coins'][$getSymbol]['buydate'] = $timestamp;
     $json_data = json_encode($coins);
     file_put_contents('lib/data/portfolio.json', $json_data);
     header('Location: index.php');
@@ -44,8 +45,8 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
 
 if ($_GET['action'] == 'remove')
 {
-    $getsymbol = strtoupper($_GET['symbol']);
-    unset($coins['coins'][$getsymbol]);
+    $getSymbol = strtoupper($_GET['symbol']);
+    unset($coins['coins'][$getSymbol]);
     $json_data = json_encode($coins);
 
     file_put_contents('lib/data/portfolio.json', $json_data);
