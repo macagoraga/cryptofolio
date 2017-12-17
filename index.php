@@ -83,20 +83,20 @@ ksort($coins['coins']);
 			<table>
 				<tr>
 					<td>Coin:</td>
-					<td><input type='text' value='' name='symbol' placeholder='Enter Symbol'/></td>
+					<td><input type='text' value='' name='symbol' placeholder='Symbol'/></td>
 				</tr>
 				<tr>
 					<td>Total:</td>
-					<td><input type='text' value='' name='total' placeholder='Number of coins' /></td>
+					<td><input type='text' value='' name='total' placeholder='Total coins' /></td>
 				</tr>
 				<tr>
 					<td>Paid:</td>
-					<td><input type='text' value='' name='amount' placeholder='xxx.xx' /><select name='currency'><option value="EUR" selected>EUR</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></td>
+					<td><input type='text' value='' name='amount' placeholder='0.00' /><select name='currency'><option value="EUR" selected>EUR</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></td>
 				</tr>
 				<tr>
 					<td>Acquired on:</td>
 					<td>
-						<input data-toggle="datepicker" placeholder='Select Date' name='buydate'>
+						<input data-toggle="datepicker" placeholder='Date' name='buydate'>
 					</td>
 				</tr>
 				<tr>
