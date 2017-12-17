@@ -57,7 +57,7 @@ ksort($coins['coins']);
 			<th class='thpl'>P/L</th>
 			<?php
 			foreach ($coins['coins'] as $symbol => $value) {
-				print_r($symbol);
+				
 				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
 				echo "<td class='symbol'>".PHP_EOL;
 				echo "<a href='portfolio.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;

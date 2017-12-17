@@ -19,12 +19,10 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     // retrieve price in currency at buy date and calculate total amount back to EUR
     if($getCurrency!="EUR"){
 
-        $prices = file_get_contents("https://min-api.cryptocompare.com/data/pricehistorical?fsym=$getCurrency&tsyms=EUR&ts=$timestamp");
+        $prices = file_get_contents("https://min-api.cryptocompare.com/data/pricehistorical?fsym=$getSymbol&tsyms=EUR&ts=$timestamp");
         $price = json_decode($prices, true);
-        $btcPriceInEur = $price[$getCurrency]['EUR'];
-        $totalPriceInEur = ($btcPriceInEur*$amountPaid);
-    
-
+        $btcPriceInEur = $price[$getSymbol]['EUR'];
+        $totalPriceInEur = ($btcPriceInEur*$totalCoins);
     }
     else{
         $totalPriceInEur =  $amountPaid; 
@@ -38,9 +36,10 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     $coins['coins'][$getSymbol]['paid'] = $totalPriceInEur;
     $coins['coins'][$getSymbol]['buydate'] = $timestamp;
     $json_data = json_encode($coins);
+    
     file_put_contents('lib/data/portfolio.json', $json_data);
-    header('Location: index.php');
-    exit;
+   header('Location: index.php');
+   exit;
 }
 
 if ($_GET['action'] == 'remove')
