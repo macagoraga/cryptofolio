@@ -1,9 +1,7 @@
-<?php
-
-$string = file_get_contents( "lib/data/portfolio.json", true );
-$coins = json_decode( $string, true );
-ksort($coins['coins']);
-?>
+<?php 
+$ini_array = parse_ini_file("api.ini.php");
+include 'portfolio.php';
+ ?>
 <html>
 	<head>
 		<title>CRYPTOFOLIO</title>
@@ -16,61 +14,53 @@ ksort($coins['coins']);
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css">
-		<link rel="stylesheet" type="text/css" href="lib/css/datepicker.min.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 		<script src="lib/js/c3.min.js"></script>
 		<script src="lib/js/jquery.color.min.js"></script>
-		<script src="lib/js/jquery.cookie.js"></script>
-		<script src="lib/js/datepicker.min.js"></script>
 		<script src="lib/js/script.js"></script>
 	</head>
 <body>
 	<div class='menu'>
-		<a href="#" id="switchtheme">
-			<i class="fa fa-adjust" aria-hidden="true"></i>
-		</a>
 		<a href='#' id='addcoin'>
 			<i class="fa fa-plus-circle" aria-hidden="true"></i>
 		</a>
 	
 	</div>
 	<h1>CRYPTOFOLIO</h1>
-	<table class='totals'>
-		<tr>
-			<th>INVESTMENT</th>
-			<th>P/L</th>
-			<th>TOTAL</th>
-		</tr> 
-		<tr class='noborder'>
-			<td><span id="total"></span></td>
-			<td><span id="profit"></span>&nbsp;<span id="profitPercent"></span></td>
-			<td><span id="totalValue"></span></td>
-		</tr>
-	</table>
- 
+	
 <div class="frame">
 	<div id="holder"> 
+		<div id="euro"></div>
 		<table> 
-			<th colspan=2 class='thcoin'>coin</th>
-			<th class='thprice'>price</th>
-			<th class='thpl'>P/L</th>
+			<tr>
+				<td colspan='4' class='first'><span id="totalValue"></span></td>
+			</tr>
+			<tr>
+				<th colspan=2 class='thcoin'>coin</th>
+				<th class='thprice'>BTC</th>
+				<th class='thpl'>VALUE (EUR)</th>
+			</tr>
 			<?php
-			foreach ($coins['coins'] as $symbol => $value) {
-				
-				echo "<tr id='". $symbol ."' class='item'>".PHP_EOL;
+			foreach ($coins as $symbol => $value) {
+			
+				echo "<tr class='". $value['symbol'] ." item' data-coin='". $value['symbol'] ."' >".PHP_EOL;
 				echo "<td class='symbol'>".PHP_EOL;
-				echo "<a href='portfolio.php?action=remove&symbol=".$symbol."' onclick=\"return confirm('Remove ".$symbol." \\nAre you sure?')\">".PHP_EOL;
-				echo "<img class='imgholder' src='#' />".PHP_EOL;
+				if($value['wallettype']!='exchange'){
+					echo "<a href='editcoin.php?action=remove&symbol=".$value['symbol']."' onclick=\"return confirm('Remove ".$value['symbol']." \\nAre you sure?')\">".PHP_EOL;
+				}else{
+					echo "<a href='#'>".PHP_EOL;
+				}
+				echo "<img class='imgholder' src='".$value['image']."' />".PHP_EOL;
 				echo "</a></td>".PHP_EOL;
-				echo "<td class='symbolname'><span class='symbolholdersmall'>".$symbol ."</span><span class='symbolholder'>".$value['name']." (".$symbol .")</span>".PHP_EOL;
-				echo "<td class='currentprice'><span class='price'></span><br/>".PHP_EOL;
-				echo "<span class='change'></span></td>".PHP_EOL;
+				echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
+				echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
+				echo "<span class='walletname' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
+				echo "<td class='pl'><span class='currentprice'>".$value['coinValue']."</span><br/>".PHP_EOL;
+				echo "<span class='owned'>". $value['coinsOwned'] . "</span></td>".PHP_EOL;
 				echo "<td class='pl'>".PHP_EOL;
-				echo "<span class='updown'></span><br/>".PHP_EOL;
-				echo "<span class='updownpct'></span><br/>".PHP_EOL;
-				echo "<span class='owned'>". $value['owned'] . "</span>".PHP_EOL;
-				echo "<span class='paid'>". $value['paid'] . "</span>".PHP_EOL;
+				echo "<span class='value'></span><br/>".PHP_EOL;
+				echo "<span class='change'></span>".PHP_EOL;
 				echo "</td>".PHP_EOL;
 				echo "</tr>".PHP_EOL;
 			}
@@ -79,7 +69,7 @@ ksort($coins['coins']);
 	</div>
 </div>
 <div id="coinform">
-		<form action="portfolio.php" method="get">
+		<form action="editcoin.php" method="get">
 			<h1>Add Coin</h1>
 			<table>
 				<tr>
@@ -91,13 +81,9 @@ ksort($coins['coins']);
 					<td><input type='text' value='' name='total' placeholder='Total coins' /></td>
 				</tr>
 				<tr>
-					<td>Paid:</td>
-					<td><input type='text' value='' name='amount' placeholder='0.00' /><select name='currency'><option value="EUR" selected>EUR</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></td>
-				</tr>
-				<tr>
-					<td>Acquired on:</td>
+					<td>Wallet:</td>
 					<td>
-						<input data-toggle="datepicker" placeholder='Date' name='buydate'>
+						<input placeholder='Wallet Name' name='walletname'>
 					</td>
 				</tr>
 				<tr>
