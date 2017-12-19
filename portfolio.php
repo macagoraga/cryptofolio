@@ -1,12 +1,12 @@
 <?php
+include_once 'functions.php';
+
 $ini_array = parse_ini_file("api.ini.php");
 $allcoins = file_get_contents('lib/data/coinlist.json');
 $coinList = json_decode($allcoins, true);
-
-
-
-include_once 'functions.php';
 $ini_array = parse_ini_file("api.ini.php");
+
+include_once 'lib/portfolio_kraken.php';
 include_once 'lib/portfolio_bittrex.php';
 include_once 'lib/portfolio_local.php';
 
@@ -22,5 +22,6 @@ foreach ($coindata['coins'] as $key => $val) {
 }
 
     uasort($coins, 'act_cmp_function');
+
 }
 ?>
