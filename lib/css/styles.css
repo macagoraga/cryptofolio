@@ -236,7 +236,7 @@ td.tdchange {
     color: #eee;
 }
 
-table.totals {
+.totals {
     margin: 40px auto 40px auto;
     table-layout: fixed
 }
