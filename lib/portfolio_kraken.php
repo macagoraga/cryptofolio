@@ -23,7 +23,7 @@
 
 				$symbol = substr($value,-3);
 				
-				if($symbol!='EUR'){
+				if($symbol!='EUR' && $v>0){
 	
 					if($symbol=='XBT'){
 						$symbol='BTC';
