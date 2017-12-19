@@ -26,7 +26,7 @@
 				if($symbol!='EUR'){
 	
 					if($symbol=='XBT'){
-						$symbol=='BTC';
+						$symbol='BTC';
 					}
 
 					$coindata['coins']['kraken'][$symbol]['wallettype'] = 'exchange';
