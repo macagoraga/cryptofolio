@@ -1,7 +1,7 @@
 <?php
 $string = file_get_contents("data/portfolio.json", true);
+
 	$coinsmanual = json_decode($string, true);
-	ksort($coinsmanual);
 
 	foreach ($coinsmanual['coins'] as $symbol => $value){
 

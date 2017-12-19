@@ -23,16 +23,23 @@ th {
     text-align: center;
     text-transform: uppercase;
 }
-tr td.first{text-align: center;font-size: 22px}
+
+tr td.first {
+    text-align: center;
+    font-size: 22px
+}
+
 .thcoin {
     text-align: left;
 }
 
-.thprice, .thpl {
+.thprice,
+.thpl {
     text-align: right;
 }
 
-.updownpct, .change {
+.updownpct,
+.change {
     font-size: 12px
 }
 
@@ -73,8 +80,16 @@ h2 {
     text-align: right;
     width: 100%;
 }
-#euro{display:none;}
-.walletname{font-size:12px;color:#999;}
+
+#euro {
+    display: none;
+}
+
+.dim {
+    font-size: 12px;
+    color: #999;
+}
+
 .negative {
     color: #F1414A;
 }
@@ -96,10 +111,9 @@ td.symbolname {
     height: 20px;
 }
 
-.paid, .owned {
+.paid{    
     color: #eee;
     font-size: 11px;
-
 }
 
 select {
@@ -125,7 +139,7 @@ select {
 
 input {
     font-size: 16px;
-    width:120px;
+    width: 120px;
 }
 
 #coinform {
@@ -143,7 +157,12 @@ input {
     color: #333;
 }
 
-tr.info td{padding:8px 0 8px 0;font-size: 12px;text-align: center;color:#eee;}
+tr.info td {
+    padding: 8px 0 8px 0;
+    font-size: 12px;
+    text-align: center;
+    color: #eee;
+}
 
 .datepicker-container {
     color: #333;
@@ -153,7 +172,10 @@ tr.info td{padding:8px 0 8px 0;font-size: 12px;text-align: center;color:#eee;}
     color: #000;
     padding: 8px
 }
-#graph .c3-grid line{stroke: #222;}
+
+#graph .c3-grid line {
+    stroke: #222;
+}
 
 #coinform tr {
     border: none;
@@ -180,7 +202,9 @@ button {
     text-align: right;
 }
 
-.pl, .currentprice, td.tdchange {
+.pl,
+.currentprice,
+td.tdchange {
     vertical-align: middle;
     text-align: right;
 }
@@ -193,6 +217,7 @@ button {
     border: none;
 }
 
+.totals th,
 .totals td {
     text-align: center;
 }
@@ -211,17 +236,21 @@ button {
     color: #eee;
 }
 
-
-
-.totals {
+table.totals {
     margin: 40px auto 40px auto;
+    table-layout: fixed
 }
 
-.c3 .c3-axis-x path, .c3 .c3-axis-x line, .c3 .c3-axis-y path, .c3 .c3-axis-y line {
+.c3 .c3-axis-x path,
+.c3 .c3-axis-x line,
+.c3 .c3-axis-y path,
+.c3 .c3-axis-y line {
     stroke: #eee;
 }
 
-.c3 .c3-axis-x g, .c3 .c3-axis-y g, .c3 .c3-legend-item-data text {
+.c3 .c3-axis-x g,
+.c3 .c3-axis-y g,
+.c3 .c3-legend-item-data text {
     fill: #eee;
 }
 
@@ -237,19 +266,27 @@ button {
     display: block;
 }
 
-
-
 @media screen and (max-width:650px) {
-    #profitPercent{font-size:12px;}
+    #profitPercent {
+        font-size: 12px;
+    }
 
-    body, td, td.span.change, .graph, .symbol, .paid, .owned, td span.change {
+    body,
+    td,
+    td.span.change,
+    .graph,
+    .symbol,
+    .paid,
+    .owned,
+    td span.change {
         font-size: 14px;
     }
 
-    th, td {
+    th,
+    td {
         padding: 8px 20px 8px 8px;
     }
-    
+
     table {
         width: 100%;
     }
@@ -265,9 +302,11 @@ button {
     .symbolholder {
         display: none;
     }
-    #coinform{
-        width:95%;
+
+    #coinform {
+        width: 95%;
     }
+
 }
 
 /* light: #F4F1DE; */

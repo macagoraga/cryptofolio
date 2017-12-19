@@ -1,5 +1,6 @@
 <?php 
 $ini_array = parse_ini_file("api.ini.php");
+$investment = $apikey=$ini_array['investment'];
 include 'portfolio.php';
  ?>
 <html>
@@ -28,41 +29,71 @@ include 'portfolio.php';
 	
 	</div>
 	<h1>CRYPTOFOLIO</h1>
+		<div id="euro"></div>
 	
 <div class="frame">
 	<div id="holder"> 
-		<div id="euro"></div>
-		<table> 
-			<tr>
-				<td colspan='4' class='first'><span id="totalValue"></span></td>
-			</tr>
+		<?php if($investment>0){ ?>
+		
+			<table class='totals'> 
+				<tr>
+					<th>INVESTMENT</th>
+					<th>TOTAL</th>
+					<th>P/L</th>
+				</tr>
+				<tr>
+					<td><span id="investment"><?php echo $investment; ?></span></td>
+					<td><span id="totalValue"></span></td>
+					<td><span id="plpct">bla</span></td>
+					
+				</tr>
+			</table>
+			
+			<?php }	else{ ?>
+			
+			<table> 
+				<tr>
+					<td class='first' colspan="3"><span id="totalValue"></span></td>
+					
+				</tr>
+			</table>
+
+			<?php } ?>
+			
+			<table>
 			<tr>
 				<th colspan=2 class='thcoin'>coin</th>
-				<th class='thprice'>BTC</th>
+				<th class='thprice'>PRICE</th>
 				<th class='thpl'>VALUE (EUR)</th>
 			</tr>
 			<?php
-			foreach ($coins as $symbol => $value) {
-			
-				echo "<tr class='". $value['symbol'] ." item' data-coin='". $value['symbol'] ."' >".PHP_EOL;
-				echo "<td class='symbol'>".PHP_EOL;
-				if($value['wallettype']!='exchange'){
-					echo "<a href='editcoin.php?action=remove&symbol=".$value['symbol']."' onclick=\"return confirm('Remove ".$value['symbol']." \\nAre you sure?')\">".PHP_EOL;
-				}else{
-					echo "<a href='#'>".PHP_EOL;
+			if(sizeof($coins)>0){
+
+				foreach ($coins as $symbol => $value) {
+				
+					echo "<tr class='". $value['symbol'] ." item' data-coin='". $value['symbol'] ."' >".PHP_EOL;
+					echo "<td class='symbol'>".PHP_EOL;
+					if($value['wallettype']!='exchange'){
+						echo "<a href='editcoin.php?action=remove&symbol=".$value['symbol']."' onclick=\"return confirm('Remove ".$value['symbol']." \\nAre you sure?')\">".PHP_EOL;
+					}else{
+						echo "<a href='#'>".PHP_EOL;
+					}
+					echo "<img class='imgholder' src='".$value['image']."' />".PHP_EOL;
+					echo "</a></td>".PHP_EOL;
+					echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
+					echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
+					echo "<span class='walletname dim' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
+					echo "<td class='pl'><span class='currentprice'>".$value['coinValue']."</span><br/>".PHP_EOL;
+					echo "<span class='owned  dim'>". $value['coinsOwned'] . "</span></td>".PHP_EOL;
+					echo "<td class='pl'>".PHP_EOL;
+					echo "<span class='value'></span><br/>".PHP_EOL;
+					echo "<span class='change'></span>".PHP_EOL;
+					echo "</td>".PHP_EOL;
+					echo "</tr>".PHP_EOL;
 				}
-				echo "<img class='imgholder' src='".$value['image']."' />".PHP_EOL;
-				echo "</a></td>".PHP_EOL;
-				echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
-				echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
-				echo "<span class='walletname' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
-				echo "<td class='pl'><span class='currentprice'>".$value['coinValue']."</span><br/>".PHP_EOL;
-				echo "<span class='owned'>". $value['coinsOwned'] . "</span></td>".PHP_EOL;
-				echo "<td class='pl'>".PHP_EOL;
-				echo "<span class='value'></span><br/>".PHP_EOL;
-				echo "<span class='change'></span>".PHP_EOL;
-				echo "</td>".PHP_EOL;
-				echo "</tr>".PHP_EOL;
+			}
+			else{
+				echo "<tr><td colspan='5'>No coins added.<td></tr>";
 			}
 			?>
 		</table>

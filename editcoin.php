@@ -20,9 +20,9 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     $localdata['coins'][$getSymbol]['owned'] = $totalCoins;
     $json_data = json_encode($localdata,true);
     
-   print_r($json_data);
-  file_put_contents('lib/data/portfolio.json', $json_data);
-   header('Location: index.php');
+  
+    file_put_contents('lib/data/portfolio.json', $json_data);
+    header('Location: index.php');
   exit;
 }
 
