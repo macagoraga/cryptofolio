@@ -1,7 +1,7 @@
 ;<?php
 ;die(); // For further security
 ;/*
-investment="2950.00"
+investment=""
 [keys]
 bittrexapi=""
 bittrexsecret=""
