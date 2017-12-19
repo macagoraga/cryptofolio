@@ -1,4 +1,14 @@
 <?php
+function act_cmp_function($a, $b) {
+        if ($a['name'] > $b['name']) {
+                return 1;
+        } else if ($a['name'] < $b['name']) {
+                return -1;
+        } else {
+                return 0;
+        }
+}
+
 function cache_image($image_url){
     //replace with your cache directory
     $image_path = 'lib/data/';

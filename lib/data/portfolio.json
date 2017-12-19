@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"coins":{}}}
+=======
+{"coins":{"BTC":{"wallettype":"manual","walletname":"Jaxx","name":"Bitcoin","fullname":"Bitcoin (BTC)","owned":"0.18749645"}}}
+>>>>>>> develop
