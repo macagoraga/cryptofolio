@@ -9,7 +9,12 @@ date_default_timezone_set('Europe/London');
     	$graphdata = json_decode($graph, true);
     
     }
+    if($_GET['type']=='hour'){
+        
+        $graph = file_get_contents("https://min-api.cryptocompare.com/data/histohour?fsym=$symbol&tsym=EUR&limit=$limit");
+        $graphdata = json_decode($graph, true);
     
+    }
     if($_GET['type']=='history'){
     
     	$graph = file_get_contents("https://min-api.cryptocompare.com/data/histoday?fsym=$symbol&tsym=EUR&limit=$limit");

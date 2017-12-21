@@ -1,8 +1,8 @@
 <?php
 	// get api bittrex keys
 	
-	$apikey=$ini_array['bittrexapi'];
-	$apisecret=$ini_array['bittrexsecret'];
+	$apikey=$ini_array['bittrex']['api'];
+	$apisecret=$ini_array['bittrex']['secret'];
 
 	if($apikey!=''){
 	 
@@ -18,7 +18,7 @@
 
 		foreach ($bittrex['result'] as $value) {
 
-			if($value["Balance"]>0){
+			if($value["Balance"]>0.009){
 				$coindata['coins']['bittrex'][$value['Currency']]['wallettype'] = 'exchange';
 				$coindata['coins']['bittrex'][$value['Currency']]['walletname'] = 'bittrex';
 		    	$coindata['coins']['bittrex'][$value['Currency']]['name'] = $coinList['Data'][$value['Currency']]['CoinName'];

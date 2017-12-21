@@ -2,13 +2,19 @@
 ;die(); // For further security
 ;/*
 
-investment="2950.00"
 
-[keys]
-bittrexapi="519b15ab8729410db8247e885113b63a"
-bittrexsecret="578d53b01d294ab4adfd0a144a6c227b"
-krakenapi=""
-krakensecret=""
+[portfolio]
+investment="3950.00"
+
+[bittrex]
+api="6cf5299692ba455d964ae43581a4d141"
+secret="49b855a3b25649d09dca3bbe434bac41"
+
+[kraken]
+api="joep"
+secret=""
+
+
 ;*/
 
 ;?>

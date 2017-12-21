@@ -3,8 +3,8 @@
 // debug
 //$krakendata = Array('error' => Array(), 'result' => Array('ETH' => 3415.8014, 'ZEUR' => 155.5649, 'XBTC' => 149.9688412800, 'XXRP' => 499889.51600000));
 
-	$apikey=$ini_array['krakenapi'];
-	$apisecret=$ini_array['krakensecret'];
+	$apikey=$ini_array['kraken']['api'];
+	$apisecret=$ini_array['kraken']['secret'];
 
 	if($apikey!=''){
 	 
