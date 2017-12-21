@@ -3,8 +3,8 @@
 // debug
 //$krakendata = Array('error' => Array(), 'result' => Array('ETH' => 3415.8014, 'ZEUR' => 155.5649, 'XBTC' => 149.9688412800, 'XXRP' => 499889.51600000));
 
-	$apikey=$ini_array['kraken']['api'];
-	$apisecret=$ini_array['kraken']['secret'];
+	$apikeyKraken=$ini_array['kraken']['api'];
+	$apisecretKraken=$ini_array['kraken']['secret'];
 
 	if($apikey!=''){
 	 
@@ -15,7 +15,7 @@
 		$sslverify = $beta ? false : true;
 		$version = 0;
 
-		$kraken = new \Payward\KrakenAPI($apikey, $apisecret, $url, $version, $sslverify);
+		$kraken = new \Payward\KrakenAPI($apikeyKraken, $apisecretKraken, $url, $version, $sslverify);
 		$krakendata = $kraken->QueryPrivate('Balance');
 		
 
