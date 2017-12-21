@@ -6,7 +6,7 @@
 	$apikeyKraken=$ini_array['kraken']['api'];
 	$apisecretKraken=$ini_array['kraken']['secret'];
 
-	if($apikey!=''){
+	if($apikeyKraken!=''){
 	 
 		require_once 'KrakenAPIClient.php'; 
 

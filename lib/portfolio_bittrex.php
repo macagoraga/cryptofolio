@@ -4,7 +4,7 @@
 	$apikeyBittrex=$ini_array['bittrex']['api'];
 	$apisecretBittrex=$ini_array['bittrex']['secret'];
 
-	if($apikey!=''){
+	if($apikeyBittrex!=''){
 	 
 	 	$nonce=time();
 		$uri='https://bittrex.com/api/v1.1/account/getbalances?apikey='.$apikeyBittrex.'&nonce='.$nonce;
