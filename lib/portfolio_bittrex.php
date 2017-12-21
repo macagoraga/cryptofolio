@@ -1,14 +1,14 @@
 <?php
 	// get api bittrex keys
 	
-	$apikey=$ini_array['bittrex']['api'];
-	$apisecret=$ini_array['bittrex']['secret'];
+	$apikeyBittrex=$ini_array['bittrex']['api'];
+	$apisecretBittrex=$ini_array['bittrex']['secret'];
 
 	if($apikey!=''){
 	 
 	 	$nonce=time();
-		$uri='https://bittrex.com/api/v1.1/account/getbalances?apikey='.$apikey.'&nonce='.$nonce;
-		$sign=hash_hmac('sha512',$uri,$apisecret);
+		$uri='https://bittrex.com/api/v1.1/account/getbalances?apikey='.$apikeyBittrex.'&nonce='.$nonce;
+		$sign=hash_hmac('sha512',$uri,$apisecretBittrex);
 		$ch = curl_init($uri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('apisign:'.$sign));
@@ -29,4 +29,5 @@
 		}
 	
 	}
+
 ?>
