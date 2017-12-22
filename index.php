@@ -43,7 +43,7 @@ $investment = $ini_array['investment'];
 				<tr>
 					<td><span id="investment"><?php echo $investment; ?></span></td>
 					<td><span id="totalValue"></span></td>
-					<td><span id="plpct">bla</span></td>
+					<td><span id="plpct"></span></td>
 					
 				</tr>
 			</table>
