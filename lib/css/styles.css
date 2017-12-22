@@ -8,11 +8,22 @@ body {
 }
 
 h1 {
-    background-color: #000;
+       
+  
     color: #fff;
     font-size: 16px;
     margin: 0;
     padding: 10px;
+    width: 100%;
+  
+    
+}
+#header{ position: fixed;
+      background-color: #000;
+      top: 0;
+    left:0;
+      z-index: 100;
+      width: 100%;
 }
 
 th {
@@ -57,7 +68,7 @@ td {
 
 .frame {
     position: relative;
-    margin: 10px auto 0 auto;
+    margin: 160px auto 0 auto;
     min-width: 320px;
     padding: 0;
 }
@@ -122,9 +133,9 @@ select {
 }
 
 .menu {
-    position: absolute;
-    right: 12px;
-    top: 4px;
+    position: fixed;
+    right: 18px;
+    top: 8px;
 }
 
 .menu a {
@@ -237,7 +248,7 @@ td.tdchange {
 }
 
 .totals {
-    margin: 40px auto 40px auto;
+    margin: 20px auto 0 auto;
     table-layout: fixed
 }
 
@@ -306,7 +317,7 @@ td.tdchange {
     #coinform {
         width: 95%;
     }
-
+    .frame{ margin: 130px auto 0 auto;}
 }
 
 /* light: #F4F1DE; */
