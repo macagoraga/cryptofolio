@@ -1,8 +1,9 @@
 <?php 
+require 'portfolio.php'; 
 $ini_array = parse_ini_file("api.ini.php");
-$investment = $apikey=$ini_array['investment'];
-include 'portfolio.php';
- ?>
+$investment = $ini_array['investment'];
+
+?>
 <html>
 	<head>
 		<title>CRYPTOFOLIO</title>
@@ -23,17 +24,14 @@ include 'portfolio.php';
 		<script src="lib/js/script.js"></script>
 	</head>
 <body>
-	<div class='menu'>
-		<a href='#' id='addcoin'>
-			<i class="fa fa-plus-circle" aria-hidden="true"></i>
-		</a>
-	
-	</div>
+<div id="header">	
 	<h1>CRYPTOFOLIO</h1>
 		<div id="euro"></div>
-	
-<div class="frame">
-	<div id="holder"> 
+	<div class='menu'>
+		<a href='#' id='addcoin'>
+			<i class="fa fa-plus" aria-hidden="true"></i>
+		</a>
+	</div>
 		<?php if($investment>0){ ?>
 		
 			<table class='totals'> 
@@ -61,6 +59,10 @@ include 'portfolio.php';
 
 			<?php } ?>
 			
+</div>
+<div class="frame">
+	<div id="holder"> 
+	
 			<table>
 			<tr>
 				<th colspan=2 class='thcoin'>coin</th>
