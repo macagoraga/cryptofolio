@@ -6,6 +6,7 @@ $allcoins = file_get_contents('lib/data/coinlist.json');
 $coinList = json_decode($allcoins, true);
 $ini_array = parse_ini_file("api.ini.php",true);
 
+$investment = $ini_array['investment'];
 // load manual coins 
 
 $string = file_get_contents("lib/data/portfolio.json", true);
