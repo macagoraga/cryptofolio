@@ -1,9 +1,4 @@
-<?php 
-require 'portfolio.php'; 
-$ini_array = parse_ini_file("api.ini.php");
-$investment = $ini_array['investment'];
-
-?>
+<?php require 'portfolio.php'; ?>
 <html>
 	<head>
 		<title>CRYPTOFOLIO</title>
