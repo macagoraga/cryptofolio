@@ -7,8 +7,8 @@ $investment = $ini_array['investment'];
 <html>
 	<head>
 		<title>CRYPTOFOLIO</title>
-		<link rel="apple-touch-startup-image" href="lib/images/launch.png">
-		<link rel="apple-touch-icon" href="lib/images/touch-icon-iphone.png" />
+		<link rel="apple-touch-startup-image" href="lib/data/launch.png">
+		<link rel="apple-touch-icon" href="lib/data/touch-icon-iphone.png" />
 		<meta name="apple-mobile-web-app-title" content="Cryptofolio">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
