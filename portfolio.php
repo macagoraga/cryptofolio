@@ -28,7 +28,7 @@ if(sizeof($coinsmanual['coins'])>0){
 
 if($ini_array['kraken']['api']!=''){
  
-	require_once 'KrakenAPIClient.php'; 
+	require_once 'lib/KrakenAPIClient.php'; 
 
 	$beta = false; 
 	$url = $beta ? 'https://api.beta.kraken.com' : 'https://api.kraken.com';
