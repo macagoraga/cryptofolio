@@ -14,10 +14,9 @@ Create your personal cryptocurrency portfolio
 
 ### Usage
 - Clone or copy the the structure into a webfolder
-- Modify `api.ini.php` enter your API keys and/or your total investment (for P/L calculation)
-- Make lib/data writable
+- Make config.json writable
 - Open your browser and navigate to the url: to the m00n!
-
+- Click the Settings icon in the right top and add coins or API keys
 
 
 Uses d3.js, c3.js and cryptocompare.com for the API.
