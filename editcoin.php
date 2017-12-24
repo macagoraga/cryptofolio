@@ -2,7 +2,7 @@
 $string = file_get_contents("config.json", true);
 $localdata = json_decode($string, true); 
 
-if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addcoin')
+if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addcoin' && isset($_GET['symbol']) && $_GET['symbol']!='' && $_GET['total']!='')
 {  
   
   	$allcoins = file_get_contents('lib/data/coinlist.json');
@@ -22,18 +22,19 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     
   
     file_put_contents('config.json', $json_data);
+    sleep(1);
     header('Location: index.php');
   exit;
 }
+
 
 if ($_GET['action'] == 'remove')
 {
     $getSymbol = strtoupper($_GET['symbol']);
     unset($localdata['coins'][$getSymbol]);
     $json_data = json_encode($localdata);
-
-    print_r($json_data);
     file_put_contents('config.json', $json_data);
+    sleep(1);
     header('Location: index.php');
     exit;
 }
