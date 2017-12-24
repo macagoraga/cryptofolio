@@ -80,9 +80,8 @@ table {
     padding: 0;
 }
 
-#coinform table {
-    width: 430px;
-}
+
+form{padding:0;margin: 0}
 
 h2 {
     font-size: 14px;
@@ -143,29 +142,52 @@ select {
     font-size: 24px;
 }
 
-#addcoin {
+#settings {
     color: #fff;
     text-decoration: none;
 }
 
-input {
+input[type='text'] {
     font-size: 16px;
-    width: 120px;
+    width: 180px;
 }
 
-#coinform {
+.form label{display: block;font-size: 11px;color: #888;padding: 0 0 8px 0}
+.form input[type='text']{
+    outline: none; 
+    border:none;
+    border-bottom: 1px solid #999;
+    display: block;margin-bottom:14px;
+    width: 180px
+}
+
+.form {
+    font-family: "Helvetica Neue",Arial;
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: 0;
-    width: 500px;
-    border: 1px solid #999;
-    padding: 10px;
-    background-color: #eee;
-    border-radius: 5px;
+    width: 380px;
+    padding:40px 40px;
+    background-color: #fff;
     transform: translate(-50%, -50%);
     color: #333;
+    z-index: 10000;
+}
+
+.apiform{display: none;}
+.form .apiform input[type='text']{width:240px;font-size: 11px}
+.form h1{
+    margin:8px 0 20px 0;
+    padding: 0 0 8px 0;
+    color: #333;
+    width: auto;
+    border-bottom: 1px solid #333;
+}
+.form td {
+    color: #000;
+    padding: 2px
 }
 
 tr.info td {
@@ -174,34 +196,46 @@ tr.info td {
     text-align: center;
     color: #eee;
 }
+input[type='text']::-webkit-input-placeholder{
+    color: #ccc;
+}
+input[type='text']:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input[type='text']:focus {
+  outline: none;
+  border-bottom-color: #00b0ff;
+}
 
 .datepicker-container {
     color: #333;
 }
 
-#coinform td {
-    color: #000;
-    padding: 8px
-}
 
 #graph .c3-grid line {
     stroke: #222;
 }
 
-#coinform tr {
-    border: none;
-}
+
 
 a {
     color: #000;
     text-decoration: none;
 }
 
-button {
+input[type='button'],input[type='submit'] {
     cursor: pointer;
-    border: 1px solid #999;
-    padding: 2px 4px;
-    background-color: #fff;
+      border: 1px solid #999;
+      padding: 4px 8px;
+      width:110px;
+      margin: 8px 8px 8px 0;
+    border-radius: 0;
+    background: none;
+    -webkit-appearance: none;
+}
+input[type='button']:active,input[type='submit']:active{
+    color: #00b0ff;
+    border-color: #00b0ff;
 }
 
 .selectors {
@@ -315,9 +349,7 @@ tr.ticker td {padding:2px 0 6px 0;text-align: center;}
         display: none;
     }
 
-    #coinform {
-        width: 95%;
-    }
+   
     .frame{ margin: 130px auto 0 auto;}
 }
 

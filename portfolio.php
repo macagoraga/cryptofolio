@@ -3,30 +3,26 @@ require 'functions.php';
 
 $allcoins = file_get_contents('lib/data/coinlist.json');
 $coinList = json_decode($allcoins, true);
-$ini_array = parse_ini_file("api.ini.php",true);
-$investment = $ini_array['investment'];
+
+$string = file_get_contents("config.json", true);
+$config = json_decode($string, true);
 
 
-// load manual coins 
-
-$string = file_get_contents("lib/data/portfolio.json", true);
-
-$coinsmanual = json_decode($string, true);
-if(sizeof($coinsmanual['coins'])>0){
-	foreach ($coinsmanual['coins'] as $symbol => $value){
+if(sizeof($config['coins'])>0){
+	foreach ($config['coins'] as $symbol => $value){
 
 		$coindata['coins']['manual'][$symbol]['wallettype'] = 'manual';
-		$coindata['coins']['manual'][$symbol]['walletname'] = $coinsmanual['coins'][$symbol]['walletname'];
+		$coindata['coins']['manual'][$symbol]['walletname'] = $config['coins'][$symbol]['walletname'];
 		$coindata['coins']['manual'][$symbol]['name'] = $coinList['Data'][$symbol]['CoinName'];
-	    $coindata['coins']['manual'][$symbol]['fullname'] =  $coinsmanual['coins'][$symbol]['fullname'];
-	    $coindata['coins']['manual'][$symbol]['owned'] = $coinsmanual['coins'][$symbol]['owned'];
+	    $coindata['coins']['manual'][$symbol]['fullname'] =  $config['coins'][$symbol]['fullname'];
+	    $coindata['coins']['manual'][$symbol]['owned'] = $config['coins'][$symbol]['owned'];
 
 	}
 }
 
 // Kraken API - get balances
 
-if($ini_array['kraken']['api']!=''){
+if($config['api']['kraken']['api']!=''){
  
 	require_once 'lib/KrakenAPIClient.php'; 
 
@@ -35,7 +31,7 @@ if($ini_array['kraken']['api']!=''){
 	$sslverify = $beta ? false : true;
 	$version = 0;
 
-	$kraken = new \Payward\KrakenAPI($ini_array['kraken']['api'], $ini_array['kraken']['secret'], $url, $version, $sslverify);
+	$kraken = new \Payward\KrakenAPI($config['api']['kraken']['api'], $config['api']['kraken']['secret'], $url, $version, $sslverify);
 	$krakendata = $kraken->QueryPrivate('Balance');
 	
 
@@ -61,11 +57,11 @@ if($ini_array['kraken']['api']!=''){
 
 // BitTrex API - get balances
 
-if($ini_array['bittrex']['api']!=''){
+if($config['api']['bittrex']['api']!=''){
  
  	$nonce=time();
-	$uri='https://bittrex.com/api/v1.1/account/getbalances?apikey='. $ini_array['bittrex']['api'] .'&nonce='.$nonce;
-	$sign=hash_hmac('sha512',$uri,$ini_array['bittrex']['secret']);
+	$uri='https://bittrex.com/api/v1.1/account/getbalances?apikey='. $config['api']['bittrex']['api'] .'&nonce='.$nonce;
+	$sign=hash_hmac('sha512',$uri,$config['api']['bittrex']['secret']);
 	$ch = curl_init($uri);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('apisign:'.$sign));
@@ -87,10 +83,10 @@ if($ini_array['bittrex']['api']!=''){
 
 // Poloniex API - get balances
 
-if($ini_array['poloniex']['api']!=''){
+if($config['api']['poloniex']['api']!=''){
  
  	require_once 'lib/PoloniexAPIClient.php'; 
- 	$polo = new poloniex($ini_array['poloniex']['api'],$ini_array['poloniex']['secret']);
+ 	$polo = new poloniex($config['api']['poloniex']['api'],$config['api']['poloniex']['secret']);
 	$poloniex = $polo->get_balances();
 	
 	foreach ($poloniex as $currency => $value) {
@@ -124,4 +120,5 @@ foreach ($coindata['coins'] as $key => $val) {
     uasort($coins, 'act_cmp_function');
 
 }
+
 ?>

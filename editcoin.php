@@ -1,5 +1,5 @@
 <?php
-$string = file_get_contents("lib/data/portfolio.json", true);
+$string = file_get_contents("config.json", true);
 $localdata = json_decode($string, true); 
 
 if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addcoin')
@@ -21,7 +21,7 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     $json_data = json_encode($localdata,true);
     
   
-    file_put_contents('lib/data/portfolio.json', $json_data);
+    file_put_contents('config.json', $json_data);
     header('Location: index.php');
   exit;
 }
@@ -33,7 +33,7 @@ if ($_GET['action'] == 'remove')
     $json_data = json_encode($localdata);
 
     print_r($json_data);
-    file_put_contents('lib/data/portfolio.json', $json_data);
+    file_put_contents('config.json', $json_data);
     header('Location: index.php');
     exit;
 }
