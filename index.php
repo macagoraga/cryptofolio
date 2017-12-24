@@ -69,6 +69,10 @@ $investment = $ini_array['investment'];
 				<th class='thprice'>PRICE</th>
 				<th class='thpl'>VALUE (EUR)</th>
 			</tr>
+			<tr class='ticker'>
+				<td colspan='5'><span id="btceuro"></span> <span id="etheuro"></span> <span id="ltceuro"></span></td>
+			</tr>
+
 			<?php
 			if(sizeof($coins)>0){
 

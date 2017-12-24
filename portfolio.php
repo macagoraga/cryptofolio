@@ -84,13 +84,36 @@ if($ini_array['bittrex']['api']!=''){
 
 }
 
+
+// Poloniex API - get balances
+
+if($ini_array['poloniex']['api']!=''){
+ 
+ 	require_once 'lib/PoloniexAPIClient.php'; 
+ 	$polo = new poloniex($ini_array['poloniex']['api'],$ini_array['poloniex']['secret']);
+	$poloniex = $polo->get_balances();
+	
+	foreach ($poloniex as $currency => $value) {
+		if($value>0){
+		$coindata['coins']['poloniex'][$currency]['wallettype'] = 'exchange';
+		$coindata['coins']['poloniex'][$currency]['walletname'] = 'poloniex';
+    	$coindata['coins']['poloniex'][$currency]['name'] = $coinList['Data'][$currency]['CoinName'];
+    	$coindata['coins']['poloniex'][$currency]['fullname'] = $coinList['Data'][$currency]['FullName'];
+    	$coindata['coins']['poloniex'][$currency]['owned'] = $value;
+    	}
+
+	}
+
+
+}
+
 // portfolio array 
 
 if(sizeof($coindata)>0){
 foreach ($coindata['coins'] as $key => $val) {
     
     foreach ($val as $i => $v) {
-    if($v['owned']>0.005){
+    if($v['owned']>0.001){
 	    $output[] = array("symbol"=>$i, "name"=>$v['name'], "wallettype"=>$v['wallettype'], "walletname"=>$v['walletname'], "coinsOwned"=>$v['owned'], "fullName"=>$v['fullname'], "image"=>symbol_lookup($i));
 	     $coins = $output;
 	    }

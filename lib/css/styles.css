@@ -268,7 +268,8 @@ td.tdchange {
 #graph .c3-legend-item {
     color: #333;
 }
-
+tr.ticker span{font-size: 11px}
+tr.ticker td {padding:2px 0 6px 0;text-align: center;}
 .symbolholdersmall {
     display: none;
 }
