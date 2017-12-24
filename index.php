@@ -1,8 +1,8 @@
 <?php 
 require 'portfolio.php'; 
-$ini_array = parse_ini_file("api.ini.php");
-$investment = $ini_array['investment'];
-
+$string = file_get_contents("config.json", true);
+$config = json_decode($string, true);
+$investment = $config['investment']['amount'];
 ?>
 <html>
 	<head>
@@ -28,8 +28,8 @@ $investment = $ini_array['investment'];
 	<h1>CRYPTOFOLIO</h1>
 		<div id="euro"></div>
 	<div class='menu'>
-		<a href='#' id='addcoin'>
-			<i class="fa fa-plus" aria-hidden="true"></i>
+		<a href='#' id='settings'>
+			<i class="fa fa-cog" aria-hidden="true"></i>
 		</a>
 	</div>
 		<?php if($investment>0){ ?>
@@ -106,31 +106,55 @@ $investment = $ini_array['investment'];
 		</table>
 	</div>
 </div>
-<div id="coinform">
+
+	<div class='form'>
+		<div class='coinform'>
+	<h1>ADD COIN</h1>
 		<form action="editcoin.php" method="get">
-			<h1>Add Coin</h1>
-			<table>
-				<tr>
-					<td>Coin:</td>
-					<td><input type='text' value='' name='symbol' placeholder='Symbol'/></td>
-				</tr>
-				<tr>
-					<td>Total:</td>
-					<td><input type='text' value='' name='total' placeholder='Total coins' /></td>
-				</tr>
-				<tr>
-					<td>Wallet:</td>
-					<td>
-						<input placeholder='Wallet Name' name='walletname'>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td><input type='submit' value='Add Coin' /><input type='button' value='Cancel' id="cancel" /></td>
-				</tr>
-			</table>
+			<label>Symbol
+			<input type='text' value='' name='symbol' placeholder='BTC'/></label>
+			<label>Total
+			<input type='text' value='' name='total' placeholder='0.01' /></label>
+			<label>Wallet Name
+			<input placeholder='Wallet Name' type='text' name='walletname' placeholder='Mist'></label>
+			<input type='submit' value='Add' /><input type='button' value='Cancel' class="cancel" /><input type='button' value='Settings' id="apiform" />
 			<input type="hidden" name='action' value='addcoin'>
 		</form>
 	</div>
+	<div class='apiform'>
+		<form action="editapi.php" method="get">
+		<h1>Initial Investment</h1>
+			<label>Amount
+				<input type="text" name="investment" placeholder="1000.00">
+			</label>
+
+		<h1>BitTrex API</h1>
+			<label>API
+				<input type="text" name="bittrexapi">
+			</label>
+			<label>Secret
+				<input type="text" name="bittrexsecret">
+			</label>
+		<h1>Kraken API</h1>
+			<label>API
+				<input type="text" name="krakenapi">
+			</label>
+			<label>Secret
+				<input type="text" name="krakensecret">
+			</label>
+		<h1>Poloniex API</h1>
+			<label>API
+				<input type="text" name="poloniexapi">
+			</label>
+			<label>Secret
+				<input type="text" name="poloniexsecret">
+			</label>
+		<input type='submit' value='Save' /><input type='button' value='Cancel' class="cancel" /><input type='button' value='Add Coin' id="manualform" />
+		<input type="hidden" name="action" value="save">
+		</form>
+
+	</div>
+	</div>
+</div>
 </body>
 </html>
