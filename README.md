@@ -7,7 +7,7 @@ Create your personal cryptocurrency portfolio
 
 ### Features
 - Create your personal cryptocurrency portfolio
-- API integration for Kraken and BitTrex
+- API integration for Kraken, BitTrex and Poloniex
 - Add coins manually
 - Prices will be calculated in EUR
 - Realtime graphs
