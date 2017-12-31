@@ -81,6 +81,31 @@ if($config['api']['bittrex']['api']!=''){
 }
 
 
+// Binance API - get balances
+
+if($config['api']['binance']['api']!=''){
+ 	require_once 'lib/BinanceAPIClient.php'; 
+   
+    $api = new Binance($config['api']['binance']['api'],$config['api']['binance']['secret']);
+
+	$binance = $api->balances($ticker);
+
+    foreach ($binance as $key => $value) {
+
+        if($value['available']>0.0009){
+            $coindata['coins']['binance'][$key]['wallettype'] = 'exchange';
+            $coindata['coins']['binance'][$key]['walletname'] = 'binance';
+            $coindata['coins']['binance'][$key]['name'] = $coinList['Data'][$key]['CoinName'];
+            $coindata['coins']['binance'][$key]['fullname'] = $coinList['Data'][$key]['FullName'];
+            $coindata['coins']['binance'][$key]['owned'] = $value["available"];
+        }
+    }
+
+
+}
+
+
+
 // Poloniex API - get balances
 
 if($config['api']['poloniex']['api']!=''){
@@ -91,6 +116,7 @@ if($config['api']['poloniex']['api']!=''){
 	
 	foreach ($poloniex as $currency => $value) {
 		if($value>0){
+		if($currency=='STR'){ $currency='XLM'; }
 		$coindata['coins']['poloniex'][$currency]['wallettype'] = 'exchange';
 		$coindata['coins']['poloniex'][$currency]['walletname'] = 'poloniex';
     	$coindata['coins']['poloniex'][$currency]['name'] = $coinList['Data'][$currency]['CoinName'];

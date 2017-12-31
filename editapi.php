@@ -15,13 +15,17 @@ if (isset($_GET['action']) && $_GET['action'] == 'save'){
 
     unset($localdata['api']);
     unset($localdata['investment']);
-    $localdata['api']['bittrex']['api']=$_GET['bittrexapi'];
-    $localdata['api']['bittrex']['secret']=$_GET['bittrexsecret'];
-    $localdata['api']['kraken']['api']=$_GET['krakenapi'];
-    $localdata['api']['kraken']['secret']=$_GET['krakensecret'];
-    $localdata['api']['poloniex']['api']=$_GET['poloniexapi'];
-    $localdata['api']['poloniex']['secret']=$_GET['poloniexsecret'];
-    $localdata['investment']['amount']=$_GET['investment'];
+    $localdata['api']['bittrex']['api']=trim($_GET['bittrexapi']);
+    $localdata['api']['bittrex']['secret']=trim($_GET['bittrexsecret']);
+    $localdata['api']['kraken']['api']=trim($_GET['krakenapi']);
+    $localdata['api']['kraken']['secret']=trim($_GET['krakensecret']);
+    $localdata['api']['poloniex']['api']=trim($_GET['poloniexapi']);
+    $localdata['api']['poloniex']['secret']=trim($_GET['poloniexsecret']);
+    $localdata['api']['binance']['api']=trim($_GET['binanceapi']);
+    $localdata['api']['binance']['secret']=trim($_GET['binancesecret']);
+
+
+    $localdata['investment']['amount']=trim($_GET['investment']);
     
     $json_data = json_encode($localdata,true);
     

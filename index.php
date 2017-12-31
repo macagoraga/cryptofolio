@@ -18,19 +18,22 @@ $investment = $config['investment']['amount'];
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="lib/css/c3.min.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 		<script src="lib/js/c3.min.js"></script>
-		<script src="lib/js/jquery.color.min.js"></script>
+		<script src="lib/js/streamer_utilities.js"></script>
 		<script src="lib/js/script.js"></script>
+
+
 	</head>
 <body>
 <div id="header">	
 	<h1>CRYPTOFOLIO</h1>
 		<div id="euro"></div>
 	<div class='menu'>
-		<a href='#' id='settings'>
-			<i class="fa fa-cog" aria-hidden="true"></i>
-		</a>
+		<button id='currency' class='active'>€</button>
+		<button id='settings'>SETTINGS</button>
+		
 	</div>
 		<?php if($investment>0){ ?>
 		
@@ -90,11 +93,11 @@ $investment = $config['investment']['amount'];
 					echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
 					echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
 					echo "<span class='walletname dim' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
-					echo "<td class='pl'><span class='currentprice'>".$value['coinValue']."</span><br/>".PHP_EOL;
-					echo "<span class='owned  dim'>". $value['coinsOwned'] . "</span></td>".PHP_EOL;
+					echo "<td class='pl'><span class='europrice'>".$value['coinValue']."</span><span class='btcprice'>&nbsp;</span>".PHP_EOL;
+					echo "<span class='change'></span></td>".PHP_EOL;
 					echo "<td class='pl'>".PHP_EOL;
-					echo "<span class='value'></span><br/>".PHP_EOL;
-					echo "<span class='change'></span>".PHP_EOL;
+					echo "<span class='eurototal'></span><span class='btctotal'></span>".PHP_EOL;
+					echo "<span class='owned  dim'>". round($value['coinsOwned'],6) . "</span>".PHP_EOL;
 					echo "</td>".PHP_EOL;
 					echo "</tr>".PHP_EOL;
 				}
@@ -134,6 +137,13 @@ $investment = $config['investment']['amount'];
 			</label>
 			<label>Secret
 				<input type="text" name="bittrexsecret">
+			</label>
+		<h1>Binance API</h1>
+			<label>API
+				<input type="text" name="binanceapi">
+			</label>
+			<label>Secret
+				<input type="text" name="binancesecret">
 			</label>
 		<h1>Kraken API</h1>
 			<label>API
