@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
+    -webkit-animation: 0;
 }
 
 h1 {
@@ -99,19 +100,42 @@ h2 {
     font-size: 12px;
     color: #999;
 }
+.cp{ color:#60BD68; }
+.cn{ color:#F15854; }
 
-.negative {
-    color: #F1414A;
+.positive { color:#fff;background-color:#60BD68; }
+.negative { color:#fff;background-color:#F15854; }
+
+
+/*@keyframes p {
+
+    0%     {background-color:#000000;}
+    50.0%  {background-color:#80BD72;} 
+    100.0%  {background-color:#000000;}
+}
+@keyframes n {
+      0%     {background-color:#000000;}
+    50.0%  {background-color:#F1414A;}
+    100.0%  {background-color:#000000;}
+}*/
+
+
+/*@keyframes pa {
+    0%     {background-color:#000000;}
+    50.0%  {background-color:#F1414A;} /* your chosen 'mid' color 
+    100.0%  {background-color:#000000;}
 }
 
-.positive {
-    color: #80BD72;
-}
-
+@keyframes  na {
+    0%     {background-color:#000000;}
+    50.0%  {background-color:#80BD72;}
+    100.0%  {background-color:#000000;}
+}*/
 .symbol {
     font-size: 11px;
     font-weight: bold;
     text-align: center;
+    padding-right:20px;
 }
 
 td.symbolname {
@@ -134,7 +158,7 @@ select {
 .menu {
     position: fixed;
     right: 18px;
-    top: 8px;
+    top: 14px;
 }
 
 .menu a {
@@ -142,10 +166,11 @@ select {
     font-size: 24px;
 }
 
-#settings {
-    color: #fff;
+.menu button {
+    color: #888;
     text-decoration: none;
 }
+#currency{width:30px;}
 
 input[type='text'] {
     font-size: 16px;
@@ -236,7 +261,7 @@ input[type='button'],input[type='submit'] {
     background: none;
     -webkit-appearance: none;
 }
-.selectors button {
+.selectors button,.menu button {
     cursor: pointer;
       border: 1px solid #888;
       padding: 2px 8px;
@@ -251,6 +276,9 @@ input[type='button']:active,input[type='submit']:active,.selectors button:active
     color: #00b0ff;
     border-color: #00b0ff;
 }
+.btcprice,.btctotal{display: none;}
+.europrice,.eurototal{display:block;}
+.menu button{color: #888}
 button.active{border-color: #00b0ff;color:#00b0ff;}
 .selectors {
     cursor: default;
@@ -262,12 +290,12 @@ button.active{border-color: #00b0ff;color:#00b0ff;}
 }
 
 .pl,
-.currentprice,
+.europrice,
 td.tdchange {
     vertical-align: middle;
     text-align: right;
 }
-
+.pl{width:150px;}
 #holder {
     display: none;
 }
@@ -303,7 +331,8 @@ td.tdchange {
 .c3 .c3-axis-x path,
 .c3 .c3-axis-x line,
 .c3 .c3-axis-y path,
-.c3 .c3-axis-y line {
+.c3 .c3-axis-y line,
+.c3 .c3-axis-y2 line{
     stroke: #eee;
 }
 
@@ -312,6 +341,7 @@ td.tdchange {
 .c3 .c3-legend-item-data text {
     fill: #eee;
 }
+.c3 g text{color:#eee;fill:#999;}
 
 #graph .c3-legend-item {
     color: #999;
@@ -344,7 +374,7 @@ tr.ticker td {padding:2px 0 6px 0;text-align: center;}
 
     th,
     td {
-        padding: 8px 20px 8px 8px;
+        padding: 4px;
     }
 
     table {
@@ -352,7 +382,7 @@ tr.ticker td {padding:2px 0 6px 0;text-align: center;}
     }
 
     .totals {
-        margin: 8px auto 20px auto;
+        margin:0 auto 0 auto;
     }
 
     .symbolholdersmall {
@@ -363,10 +393,17 @@ tr.ticker td {padding:2px 0 6px 0;text-align: center;}
         display: none;
     }
 
-   
+    .symbol{padding-right:4px;}
     .frame{ margin: 130px auto 0 auto;}
-    .form {width:90%; top: 62%;padding:14px;}
+    .form {width:100%; top: 60px;left:0;padding:14px; transform: none;}
+
    input[type='button'],input[type='submit'] { width:80px;}
+
+   .frame {
+   
+    margin: 100px auto 0 auto;
+}
+
 }
 
 /* light: #F4F1DE; */
