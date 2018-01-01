@@ -1,0 +1,8 @@
+{"coins":{"BTC":{"wallettype":"manual","walletname":"Jaxx","name":"Bitcoin","fullname":"Bit
+coin (BTC)","owned":"0.15482183"}},"api":{"bittrex":{"api":"6cf5299692ba455d964ae43581a4d14
+1","secret":"49b855a3b25649d09dca3bbe434bac41"},"kraken":{"api":"","secret":""},"poloniex":
+{"api":"8498T4DP-MV1VYHJH-IGCO5YN6-ZRIFI8PG","secret":"c580c87d91d79b6bd056b146acab68e51209
+f1109dcf89f53d0483debb9554818e228f8268a8369252f24c0aaabc7f41d705575ee0b8976e482d79bd886dbf3
+d"},"binance":{"api":"bQN4EYJg5seC4lu8FsFi8RsHZfmhZRaRydVvblZa1xWcfFBNzRbiq5HnBmhTLRAB","se
+cret":"vq0TXmz1gsfKURjoyCpsEpJbfM7IWLCJIJ0bkaiP2lsfUTUY3ZRcfkMCpKBIzu38"}},"investment":{"a
+mount":"5700.00"}}
