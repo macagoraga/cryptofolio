@@ -68,6 +68,7 @@ if($config['api']['bittrex']['api']!=''){
 	$execResult = curl_exec($ch);
 	$bittrex = json_decode($execResult,true);
 
+
 	foreach ($bittrex['result'] as $value) {
 
 		$coindata['coins']['bittrex'][$value['Currency']]['wallettype'] = 'exchange';
