@@ -139,9 +139,11 @@ $investment = $config['investment']['amount'];
 	</div>
 </div>
 <div id="chartcontainer">
-	<h2><span id='chartsymbolname'></span> <span id='charttickereuro'></span> <span id='charttickerbtc'></span> <span id='charttickerchange'></span> <span id='loader'>Loading...</span></h2>
+	<h2><span id='chartsymbolname'></span> <span id='charttickereuro'></span> <span id='charttickerbtc'></span> <span id='charttickerchange'></h2>
 	
 	<div id="chart"></div>
+	<div id="load"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></div>
+	<div id="error">Error loading data.</div>
 	<nav>
 		<a href='#' id="charthide">HIDE</a> | <a href='javascript:void(0)' id="1d" class='selected'>1D</a> | <a href='javascript:void(0)' id='7d'>7D</a> | <a href='javascript:void(0)' id='1m'>1M</a> | <a href='javascript:void(0)' id='3m'>3M</a><br/>
 		

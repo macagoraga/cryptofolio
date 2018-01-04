@@ -8,19 +8,19 @@ $limit = $_GET['limit'];
 $symbol = $_GET['symbol'];
 if($_GET['type']=='minutes'){
 	
-	$graph = file_get_contents("https://min-api.cryptocompare.com/data/histominute?fsym=$symbol&tsym=EUR&limit=$limit&aggregate=10");
+	$graph = file_get_contents("https://min-api.cryptocompare.com/data/histominute?fsym=$symbol&tsym=EUR&limit=$limit&aggregate=3&e=CCCAGG");
 	$graphdata = json_decode($graph, true);
 
 }
 if($_GET['type']=='hours'){
     
-    $graph = file_get_contents("https://min-api.cryptocompare.com/data/histohour?fsym=$symbol&tsym=EUR&limit=$limit");
+    $graph = file_get_contents("https://min-api.cryptocompare.com/data/histohour?fsym=$symbol&tsym=EUR&limit=$limit&e=CCCAGG");
     $graphdata = json_decode($graph, true);
 
 }
 if($_GET['type']=='days'){
 
-	$graph = file_get_contents("https://min-api.cryptocompare.com/data/histoday?fsym=$symbol&tsym=EUR&limit=$limit");
+	$graph = file_get_contents("https://min-api.cryptocompare.com/data/histoday?fsym=$symbol&tsym=EUR&limit=$limit&e=CCCAGG");
 	$graphdata = json_decode($graph, true);
 
 }
