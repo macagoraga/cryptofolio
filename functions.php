@@ -56,7 +56,7 @@ function symbol_lookup($symbol)
     $json = json_decode($coinlist, true);
     $imgurl = "https://www.cryptocompare.com/".$json['Data'][$symbol]['ImageUrl'];
     
-    return cache_image($imgurl);
+    return $imgurl;
 }
 
 function price_lookup($symbol, $currency)

@@ -19,9 +19,10 @@ body {
 #6A9A1F
 #F6F6E8
 #404040*/
-#loader{display: none;color:#ccd1d5;font-size: 11px;}
-#chartcontainer{margin: 20px;}
+#chartcontainer{position:relative;margin: 20px;}
 #chart{margin-top: 0}
+#error,#load{position: absolute;top:225px;width:120px;margin:0 auto;left:0;right:0;font-size: 11px;display: none;text-align: center;}
+#load i{color:#ccd1d5;}
 #chartcontainer,#charthide{display: none;}
 #chart{width:100%;}
 
@@ -38,7 +39,6 @@ body {
     font-size: 11px;  
     margin: 12px 0 0 52px;
 }
-#load{font-size: 11px;line-height: 14px;display: block;margin-top:14px }
 .header small {
     font-size: 11px;
     color: #65737e

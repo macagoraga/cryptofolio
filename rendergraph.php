@@ -195,6 +195,8 @@
 </style>
 <body>
 <script>
+$("#load").show();
+
 var data 
 var intFrameWidth = window.innerWidth-40;
 
@@ -485,9 +487,10 @@ var intFrameWidth = window.innerWidth-40;
 
     svg.append('g')
             .attr("class", "crosshair rsi");
-
+    console.log(charturl);
     d3.csv(charturl, function(error, data) {
 
+            
             var accessor = candlestick.accessor(),
             indicatorPreRoll = 33;  // Don't show where indicators don't have data
          
@@ -501,7 +504,17 @@ var intFrameWidth = window.innerWidth-40;
                 volume: +d.Volume
             };
         }).sort(function(a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
+        
+        if((typeof(error) == "undefined" && error == null) || ( !data || !data.length) ){
+                $("#error").show();
+                $("#load").hide();
+                   
+            }else{
+               
+                $("#load,#error").hide();
 
+        }
+        
         x.domain(techan.scale.plot.time(data).domain());
         y.domain(techan.scale.plot.ohlc(data.slice(indicatorPreRoll)).domain());
         yPercent.domain(techan.scale.plot.percent(y, accessor(data[indicatorPreRoll])).domain());
@@ -607,6 +620,5 @@ var intFrameWidth = window.innerWidth-40;
         // }, 10000); // Randomly pick an interval to update the chart
 
     }
-    $("#loader").hide()
 $("#charthide").show()
 </script>
