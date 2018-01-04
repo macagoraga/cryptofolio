@@ -22,13 +22,13 @@ function cache_image($image_url){
     if($extension == "gif" || $extension == "jpg" || $extension == "jpeg" || $extension == "png") {
         //get the remote image
         if(!file_exists($image_path.$image_filename)){
-            echo "file doesn't exist";
+
             $image_to_fetch = file_get_contents($image_url);
-            //save it
             $local_image_file = fopen($image_path.$image_filename, 'w+');
-            chmod($image_path.$image_filename,0755);
             fwrite($local_image_file, $image_to_fetch);
             fclose($local_image_file);
+            chmod($image_path.$image_filename,0777);
+
         }
 
        return $image_path.$image_filename;
