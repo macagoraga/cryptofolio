@@ -34,10 +34,12 @@ $investment = $config['investment']['amount'];
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="lib/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.css">
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
  		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/techan.js/0.8.0/techan.min.js"></script>	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js"></script>
  		<script src="lib/js/streamer_utilities.js"></script>
 		<script src="lib/js/script.js"></script>
 
@@ -93,8 +95,9 @@ $investment = $config['investment']['amount'];
 			</div>
 	</div>
 	<div id="form"></div>
-	<div id="table"> 
 	
+	<div id="table"> 
+	<div class='filter'><a href='javascript:void(0)' class='selected'>ALL</a> | <a href='javascript:void(0)'>PORTFOLIO</a> | <a href='javascript:void(0)'>WATCH</a></div>
 			<table>
 			<tr>
 				<th colspan=2 class='thcoin'>coin</th>
@@ -125,8 +128,16 @@ $investment = $config['investment']['amount'];
 					echo "<td class='pl'><span class='europrice'>".$value['coinValue']."</span><span class='btcprice'>&nbsp;</span></td>".PHP_EOL;
 					echo "<td class='thchange'><span class='change'></span></td>".PHP_EOL;
 					echo "<td class='pl'>".PHP_EOL;
-					echo "<span class='eurototal'></span><span class='btctotal'></span>".PHP_EOL;
-					echo "<span class='owned  dim'>". round($value['coinsOwned'],6) . "</span>".PHP_EOL;
+					if($value['walletname']=='watch'){
+
+						echo "<span class='eurototal watch'></span><span class='btctotal watch'></span><span class='watchonly'><i class='fa fa-eye' aria-hidden='true'></i></span>".PHP_EOL;
+						echo "<span class='owned watch'>". round($value['coinsOwned'],6) . "</span>".PHP_EOL;
+					
+					}else{
+						echo "<span class='eurototal'></span><span class='btctotal'></span>".PHP_EOL;
+						echo "<span class='owned  dim'>". round($value['coinsOwned'],6) . "</span>".PHP_EOL;
+					
+					}
 					echo "</td>".PHP_EOL;
 					echo "</tr>".PHP_EOL;
 				}
@@ -158,5 +169,6 @@ $investment = $config['investment']['amount'];
 	</div>
 </div>
 </div>
-</body>
+<!-- <script>document.write('<script src="http://10.0.0.17:35729/livereload.js?snipver=1"></' + 'script>')</script>
+ --></body>
 </html>

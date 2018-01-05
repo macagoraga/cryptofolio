@@ -487,21 +487,21 @@ var intFrameWidth = window.innerWidth-40;
 
     svg.append('g')
             .attr("class", "crosshair rsi");
-    console.log(charturl);
-    d3.csv(charturl, function(error, data) {
-
-            
+    
+    d3.json(charturl, function(data) {
             var accessor = candlestick.accessor(),
             indicatorPreRoll = 33;  // Don't show where indicators don't have data
          
-        data = data.map(function(d) {
+        data = data.Data.map(function(d) {
+            
+            var epoch = d3.utcParse("%s");
             return {
-                date: parseDate(d.Date),
-                open: +d.Open,
-                high: +d.High,
-                low: +d.Low,
-                close: +d.Close,
-                volume: +d.Volume
+                date: epoch(d.time),
+                open: +d.open,
+                high: +d.high,
+                low: +d.low,
+                close: +d.close,
+                volume: +d.volumeto
             };
         }).sort(function(a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
         
@@ -545,6 +545,7 @@ var intFrameWidth = window.innerWidth-40;
         yPercentInit = yPercent.copy();
 
         draw(data);
+        
     });
 
     function reset() {
@@ -562,6 +563,7 @@ var intFrameWidth = window.innerWidth-40;
     }
 
     function draw(data) {
+       
         svg.select("g.x.axis").call(xAxis);
         svg.select("g.ohlc .axis").call(yAxis);
         svg.select("g.volume.axis").call(volumeAxis);
@@ -584,41 +586,10 @@ var intFrameWidth = window.innerWidth-40;
         svg.select("g.crosshair.macd").call(macdCrosshair.refresh);
         svg.select("g.crosshair.rsi").call(rsiCrosshair.refresh);
         
-        //     updategraph =setTimeout(function() {
-            
-
-            
-        //         var n = Math.round(new Date( (new Date()).getTime() - 1000 * 60 )/1000);
-        //         update = "https://min-api.cryptocompare.com/data/histominute?fsym="+symbolname+"&tsym=BTC&limit=1&e=CCCAGG&"
-        //         var epoch = d3.utcParse("%s");
-        //         $.getJSON( update, function( out ) {
-        //             var prices = []
-        //             var euro = $("#euro").text().replace("€ ","");
-        //             //console.log(data.Data[0]);
-
-        //             prices.open = out.Data[0].open*euro
-        //             prices.close = out.Data[0].close*euro
-        //             prices.high = out.Data[0].high*euro
-        //             prices.low = out.Data[0].low*euro
-        //             prices.volume = out.Data[0].volume
-        //             prices.timestamp = epoch(out.Data[0].time)
-                   
-        //             data.push(prices)
-        //              console.log(data)
-        //         })
-
-        //         // Simulate intra day updates when no feed is left
-        //         // var last = data[data.length-1];
-        //         // //last.open = Math.round(((last.high - last.low)*Math.random())*10)/10+last.low;
-        //         // // Last must be between high and low
-        //         // last.close = Math.round(((last.high - last.low)*Math.random())*10)/10+last.low;
-
-                
-            
-
-        //     draw(data);
-        // }, 10000); // Randomly pick an interval to update the chart
+       
 
     }
+
+
 $("#charthide").show()
 </script>
