@@ -89,7 +89,7 @@ if($config['api']['binance']['api']!=''){
    
     $api = new Binance($config['api']['binance']['api'],$config['api']['binance']['secret']);
 
-	$binance = $api->balances($ticker);
+	$binance = $api->balances();
 
     foreach ($binance as $key => $value) {
 
@@ -136,7 +136,7 @@ if(sizeof($coindata)>0){
 foreach ($coindata['coins'] as $key => $val) {
     
     foreach ($val as $i => $v) {
-    if($v['owned']>0.001){
+    if($v['owned']>0.001 || $v['walletname']=='watch'){
 	    $output[] = array("symbol"=>$i, "name"=>$v['name'], "wallettype"=>$v['wallettype'], "walletname"=>$v['walletname'], "coinsOwned"=>$v['owned'], "fullName"=>$v['fullname'], "image"=>symbol_lookup($i));
 	     $coins = $output;
 	    }

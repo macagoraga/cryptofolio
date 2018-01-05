@@ -25,7 +25,8 @@ body {
 #load i{color:#ccd1d5;}
 #chartcontainer,#charthide{display: none;}
 #chart{width:100%;}
-
+#coinlist{margin-top:10px; }
+.selectize-control{margin: 10px 0;}
 #chartcontainer h1{
     color: #eee;
     font-size: 16px;
@@ -119,16 +120,26 @@ body {
 span.currency {
     font-size: 11px;
 }
-
+span.owned.watch,span.eurototal.watch,span.btctotal.watch{display: none}
+.watchonly{
+    
+    display:block;
+    text-align: right;
+    color: #5a5c51;
+}
 th {
     color: #999;
     font-weight: normal;
     font-size: 11px;
-    padding: 0px 0 8px 4px;
+    padding: 8px 0 8px 4px;
     text-align: center;
     text-transform: uppercase;
-}
+    border-top: 1px solid #5a5c51;
 
+}
+.filter{text-align: right;font-size:11px;margin: 0 0 8px 0;}
+.filter a{;color:#5a5c51;margin:0 4px;}
+.filter a.selected{;color:#ccd1d5;}
 
 .thcoin {
     text-align: left;
@@ -164,7 +175,7 @@ td {
 table {
     border-collapse: collapse;
     margin: 0 auto;
-    width: 650px;
+    width: 100%;
     padding: 0;
 }
 
@@ -285,7 +296,8 @@ input[type='text'] {
 box-shadow: inset 0 7px 3px -7px rgba(0,0,0,0.9);
 border-bottom-right-radius: 12px;
 border-bottom-left-radius: 12px;
-}
+z-index: 20000;}
+.coinform input:disabled{background-color: #eee}
 .coinform fieldset,.apiform fieldset{color:#333;padding: 20px;border:1px solid #999;
     border-radius:8px;
     }
@@ -293,7 +305,7 @@ border-bottom-left-radius: 12px;
     display: block;
     font-size: 11px;
     color: #333;
-    margin-bottom:10px;
+    margin:10px 0;
     text-transform: uppercase;
     
     display: block;
@@ -418,7 +430,8 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
 }
 
 #table {
-    margin-top: 30px;
+    width:650px;
+    margin: 8px auto 0 auto;
 }
 
 .graph {
@@ -447,6 +460,7 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
     display: block;
 }
 @media screen and (max-width:650px) {
+    html,body{height: 100%; overflow: auto; margin: 0;-webkit-overflow-scrolling: touch;}
     .header{margin-bottom:0; }
     .flex-item:nth-child(2) .content,.flex-item:nth-child(3) .content,.flex-item:nth-child(4) .content{
         padding: 8px 6px;
@@ -474,7 +488,9 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
 
         width: 100%;
     }
+    .filter{margin-top: 8px;}
     #table{
+        width:100%;
         margin-top: 0px;
     }
     #form{width: 100%;top:48px}
