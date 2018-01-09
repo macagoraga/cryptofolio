@@ -7,6 +7,7 @@ $coinList = json_decode($allcoins, true);
 
 $string = file_get_contents($configfile, true);
 $config = json_decode($string, true);
+
 include 'functions.php';
 require_auth();
 
