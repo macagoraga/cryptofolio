@@ -287,7 +287,7 @@ select {
     width: 30px;
 }
 
-input[type='text'] {
+input[type='text'],input[type='password']  {
     font-size: 16px;
     width: 180px;
     background: none;
@@ -314,7 +314,7 @@ z-index: 20000;}
 
 }
 .coinform legend,.apiform legend{ font-size: 12px;color:#666; }
-.coinform input[type='text'], .apiform input[type='text'] {
+.coinform input[type='text'], .apiform input[type='text'],.apiform input[type='password'] {
     outline: none;
     margin-top: 8px;
     display: block;
@@ -395,7 +395,7 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
     border-color: #ccd1d5;
 }
 
-.btcprice, .btctotal {
+.btctotal {
     display: none;
 }
 

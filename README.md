@@ -1,27 +1,38 @@
 # Simple cryptocurrency portfolio in PHP
-Create your personal cryptocurrency portfolio
+Your personal cryptocurrency portfolio
+Get an overview of all your assets and balances
 
 ### Requirements
 - Webserver that can serve PHP
-- lib/data needs to be writable by the webserver to cache images and to write portfolio.json
 
 ### Features
-- Create your personal cryptocurrency portfolio
-- API integration for Kraken, BitTrex and Poloniex
-- Add coins manually
-- Prices will be calculated in EUR
-- Realtime graphs
+- API integration with Kraken, Bittrex, Binance, Kucoin and Poloniex
+- Retrieves your balances and calculates your total portfolio value
+- Add coins manually (that are living in a wallet) or to add them to the watchlist
+- Prices are market average and are calculated in EUR
+- Charts (techanjs)
+- Works on mobile and webapp capable on iOS
 
-### Usage
+### Install
 - Clone or copy the the structure into a webfolder
-- Make config.json writable
+- Make lib/data writable
+- Move config.json outside the web directory for security (as your API keys will be stored in here)
+- Make sure config.json is writable with the correct owner:group and make sure the directory and file can be accessed by your webserver
+- Edit config.php and modify the path where `config.json` is located. eg.
+
+```$configfile = '/home/mydir/config.json';```
+
 - Open your browser and navigate to the url: to the m00n!
-- Click the Settings icon in the right top and add coins or API keys
+- Click the hamburger icon in the right top to:
+  - Add coins
+  - Your initial investment
+  - Set a username/password if desired.
+  - API keys (use read-only keys for security).
 
 
-Uses d3.js, c3.js and cryptocompare.com for the API.
+Uses d3.js, techanjs for the charts and cryptocompare.com for the API.
 
-![example](lib/data/example_screen_dark.jpg)
+![example](lib/data/example.jpg)
 
 
 
