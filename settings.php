@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
      
      $("#watch").click(function(){
@@ -40,10 +41,21 @@
 
 
      });
+     $("#saveapi").click(function(e){
+     	e.preventDefault()
+     	
+     	$.post( "editapi.php", $( "#apidetails" ).serialize() )
+     	.done(function( data ) {
+    	 if(data=='ok'){
+    	 	$(".cancel").trigger('click')
+    	 	setTimeout(function(){ location.reload() },500);
+    	 }
+  		});
+     })
 
 </script>
 <div class='coinform'>
- <form action="editcoin.php" method="get" id="editcoin">
+ <form action="editcoin.php" method="post" id="editcoin">
 <fieldset>
 	<legend>Add Coin</legend>
 	<label>Symbol</label>
@@ -79,8 +91,9 @@
 </fieldset>
 </form>
 </div>
+<?php define('cryptofolio', TRUE); ?>
 <div class='apiform'>
-<form action="editapi.php" method="get">
+<form action="editapi.php" method="get" id="apidetails">
 <fieldset>
 	<legend>Settings</legend>
 	<h1>Investment</h1>
@@ -117,7 +130,7 @@
 	<input type="text" name="kucoinapi">
 	<label>Secret</label>
 	<input type="text" name="kucoinsecret"><br/>
-<input type='submit' value='Save' /><input type='button' value='Cancel' class="cancel" /><input type='button' value='Add Coin' id="manualform" />
+<input type='submit' value='Save' id="saveapi" /><input type='button' value='Cancel' class="cancel" /><input type='button' value='Add Coin' id="manualform" />
 <input type="hidden" name="action" value="save">
 </fieldset>
 </form>

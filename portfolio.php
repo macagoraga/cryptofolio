@@ -1,7 +1,5 @@
 <?php
 
-
-
 if(isset($config['coins']) && sizeof($config['coins'])>0){
 	foreach ($config['coins'] as $symbol => $value){
 
@@ -47,6 +45,7 @@ if(isset($config['api']['kraken']['api']) && $config['api']['kraken']['api']!=''
 		}
 	}
 }
+usleep(1000);
 
 // BitTrex API - get balances
 
@@ -63,16 +62,17 @@ if(isset($config['api']['bittrex']['api']) && $config['api']['bittrex']['api']!=
 
 
 	foreach ($bittrex['result'] as $value) {
-
+		if($value["Balance"]>0.0009){
 		$coindata['coins']['bittrex'][$value['Currency']]['wallettype'] = 'exchange';
 		$coindata['coins']['bittrex'][$value['Currency']]['walletname'] = 'BitTrex';
     	$coindata['coins']['bittrex'][$value['Currency']]['name'] = $coinList['Data'][$value['Currency']]['CoinName'];
     	$coindata['coins']['bittrex'][$value['Currency']]['fullname'] = $coinList['Data'][$value['Currency']]['FullName'];
     	$coindata['coins']['bittrex'][$value['Currency']]['owned'] = $value["Balance"];
-
+		}
 	}
 }
 
+usleep(1000);
 
 // Binance API - get balances
 
@@ -93,7 +93,7 @@ if(isset($config['api']['binance']['api']) && $config['api']['binance']['api']!=
         }
     }
 }
-
+usleep(1000);
 
 
 // Poloniex API - get balances
@@ -117,6 +117,7 @@ if(isset($config['api']['poloniex']['api']) && $config['api']['poloniex']['api']
     	}
 	}
 }
+usleep(1000);
 
 // Kucoin API - get balances
 if(isset($config['api']['kucoin']['api']) && $config['api']['kucoin']['api']!=''){
@@ -157,6 +158,7 @@ if(isset($config['api']['kucoin']['api']) && $config['api']['kucoin']['api']!=''
 		$x = $kucoin['data'][$a];
 		$currency = $x['coinType'];
 		if($x['balance']>0 && strpos( $x['balance'], 'E' ) == false){
+
 			$coindata['coins']['kucoin'][$currency]['wallettype'] = 'exchange';
 			$coindata['coins']['kucoin'][$currency]['walletname'] = 'Kucoin';
 	    	$coindata['coins']['kucoin'][$currency]['name'] = $coinList['Data'][$currency]['CoinName'];
@@ -165,9 +167,8 @@ if(isset($config['api']['kucoin']['api']) && $config['api']['kucoin']['api']!=''
 		}
 	}
 
-
 }
-
+usleep(1000);
 // portfolio array 
 
 if(isset($coindata) && sizeof($coindata)>0){
