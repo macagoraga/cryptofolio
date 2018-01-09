@@ -86,7 +86,7 @@ function require_auth() {
     if(isset($config['user']['username']) && isset($config['user']['password']) && $config['user']['username'] !=''){
         $AUTH_USER = $config['user']['username'];
         $AUTH_PASS = $config['user']['password'];
-        header('Cache-Control: no-cache, must-revalidate, max-age=3600');
+        header('Cache-Control: no-cache, must-revalidate, max-age=0');
         $has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
         $is_not_authenticated = (
             !$has_supplied_credentials ||
