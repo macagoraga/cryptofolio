@@ -70,7 +70,7 @@
 
 		$coinlist = file_get_contents("lib/data/coinlist.json");
 	    $json = json_decode($coinlist, true);
-	    print_r($json);
+	   
 	    usort($json['Data'], "cmp");
 		foreach ($json['Data'] as $key => $jsons) { // This will search in the 2 jsons
 		    echo "<option value='".$jsons['Symbol']."'>".$jsons['FullName'] ."</option>";	
