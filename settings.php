@@ -1,7 +1,7 @@
 <script type="text/javascript">
      
      $("#watch").click(function(){
-     	console.log($(this).prop('checked'))
+     	
      	if($(this).prop('checked')===true ){
      		$("#walletname,#total").prop("disabled",true)
      		$("#walletname,#total").val('')
@@ -83,30 +83,40 @@
 <form action="editapi.php" method="get">
 <fieldset>
 	<legend>Settings</legend>
-	<label>Amount
-		<input type="text" name="investment" placeholder="1000.00">
-	</label>
+	<h1>Investment</h1>
+	<input type="text" name="investment" placeholder="1000.00">
+	
+	<h1>Set username/password</h1>
+	<label>Username</label>
+	<input type="text" name="username">
+	<label>Password</label>
+	<input type="password" name="password">
 
-<h1>BitTrex API</h1>
+	<h1>BitTrex API</h1>
 	<label>API</label>
 	<input type="text" name="bittrexapi">
 	<label>Secret</label>
 	<input type="text" name="bittrexsecret">
-<h1>Binance API</h1>
+	<h1>Binance API</h1>
 	<label>API</label>
 	<input type="text" name="binanceapi">
 	<label>Secret</label>
 	<input type="text" name="binancesecret">
-<h1>Kraken API</h1>
+	<h1>Kraken API</h1>
 	<label>API</label>
 	<input type="text" name="krakenapi">
 	<label>Secret</label>
 	<input type="text" name="krakensecret">
-<h1>Poloniex API</h1>
+	<h1>Poloniex API</h1>
 	<label>API</label>
 	<input type="text" name="poloniexapi">
 	<label>Secret</label>
 	<input type="text" name="poloniexsecret"><br/>
+	<h1>Kucoin API</h1>
+	<label>API</label>
+	<input type="text" name="kucoinapi">
+	<label>Secret</label>
+	<input type="text" name="kucoinsecret"><br/>
 <input type='submit' value='Save' /><input type='button' value='Cancel' class="cancel" /><input type='button' value='Add Coin' id="manualform" />
 <input type="hidden" name="action" value="save">
 </fieldset>

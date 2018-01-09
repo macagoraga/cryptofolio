@@ -56,7 +56,7 @@ function symbol_lookup($symbol)
     $json = json_decode($coinlist, true);
     $imgurl = "https://www.cryptocompare.com".$json['Data'][$symbol]['ImageUrl'];
     
-    return $imgurl;
+    return cache_image($imgurl);
 }
 
 function price_lookup($symbol, $currency)
@@ -77,5 +77,28 @@ function graph_data($symbol)
         $out .= $value['close'].",";
     }
     return substr($out, 0, strlen($out) - 1);
+}
+
+function require_auth() {
+    include 'config.php';
+    $string = file_get_contents($configfile, true);
+    $config = json_decode($string, true);
+    if(isset($config['user']['username']) && isset($config['user']['password']) && $config['user']['username'] !=''){
+        $AUTH_USER = $config['user']['username'];
+        $AUTH_PASS = $config['user']['password'];
+        header('Cache-Control: no-cache, must-revalidate, max-age=3600');
+        $has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
+        $is_not_authenticated = (
+            !$has_supplied_credentials ||
+            $_SERVER['PHP_AUTH_USER'] != $AUTH_USER ||
+            $_SERVER['PHP_AUTH_PW']   != $AUTH_PASS
+        );
+        if ($is_not_authenticated) {
+            header('HTTP/1.1 401 Authorization Required');
+            header('WWW-Authenticate: Basic realm="Access denied"');
+            exit;
+     }
+ }
+
 }
 ?>

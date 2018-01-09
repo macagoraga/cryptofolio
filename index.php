@@ -1,27 +1,18 @@
 <?php 
+include 'config.php';
 
+$allcoins = file_get_contents('lib/data/coinlist.json');
+$coinList = json_decode($allcoins, true);
 
-// function require_auth() {
-// 	$AUTH_USER = 'admin';
-// 	$AUTH_PASS = 'admin';
-// 	header('Cache-Control: no-cache, must-revalidate, max-age=0');
-// 	$has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
-// 	$is_not_authenticated = (
-// 		!$has_supplied_credentials ||
-// 		$_SERVER['PHP_AUTH_USER'] != $AUTH_USER ||
-// 		$_SERVER['PHP_AUTH_PW']   != $AUTH_PASS
-// 	);
-// 	if ($is_not_authenticated) {
-// 		header('HTTP/1.1 401 Authorization Required');
-// 		header('WWW-Authenticate: Basic realm="Access denied"');
-// 		exit;
-// 	}
-// }
-// require_auth();
-require 'portfolio.php'; 
-$string = file_get_contents("config.json", true);
+$string = file_get_contents($configfile, true);
 $config = json_decode($string, true);
+include 'functions.php';
+require_auth();
+
+include 'portfolio.php'; 
 $investment = $config['investment']['amount'];
+
+
 ?>
 <html>
 	<head>
@@ -109,7 +100,7 @@ $investment = $config['investment']['amount'];
 			
 
 			<?php
-			if(sizeof($coins)>0){
+			if(isset($coins) && sizeof($coins)>0){
 
 				foreach ($coins as $symbol => $value) {
 				
@@ -125,7 +116,7 @@ $investment = $config['investment']['amount'];
 					echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
 					echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
 					echo "<span class='walletname dim' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
-					echo "<td class='pl'><span class='europrice'>".$value['coinValue']."</span><span class='btcprice'>&nbsp;</span></td>".PHP_EOL;
+					echo "<td class='pl'><span class='europrice'>".$value['coinValue']."</span><span class='btcprice dim'>&nbsp;</span></td>".PHP_EOL;
 					echo "<td class='thchange'><span class='change'></span></td>".PHP_EOL;
 					echo "<td class='pl'>".PHP_EOL;
 					if($value['walletname']=='watch'){
