@@ -63,13 +63,13 @@ if(isset($config['api']['bittrex']['api']) && $config['api']['bittrex']['api']!=
 
 
 	foreach ($bittrex['result'] as $value) {
-
+		if($value["Balance"]>0.0009){
 		$coindata['coins']['bittrex'][$value['Currency']]['wallettype'] = 'exchange';
 		$coindata['coins']['bittrex'][$value['Currency']]['walletname'] = 'BitTrex';
     	$coindata['coins']['bittrex'][$value['Currency']]['name'] = $coinList['Data'][$value['Currency']]['CoinName'];
     	$coindata['coins']['bittrex'][$value['Currency']]['fullname'] = $coinList['Data'][$value['Currency']]['FullName'];
     	$coindata['coins']['bittrex'][$value['Currency']]['owned'] = $value["Balance"];
-
+		}
 	}
 }
 

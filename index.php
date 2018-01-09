@@ -1,4 +1,5 @@
 <?php 
+
 include 'config.php';
 
 $allcoins = file_get_contents('lib/data/coinlist.json');
@@ -94,7 +95,6 @@ $investment = $config['investment']['amount'];
 				<th colspan=2 class='thcoin'>coin</th>
 				<th class='thprice'>PRICE</th>
 				<th class='thchange'>24HR</th>
-
 				<th class='thpl'>VALUE (EUR)</th>
 			</tr>
 			
@@ -116,7 +116,7 @@ $investment = $config['investment']['amount'];
 					echo "<td class='symbolname'><span class='symbolholdersmall'>".$value['symbol'];
 					echo "</span><span class='symbolholder'>".$value['fullName']."</span>";
 					echo "<span class='walletname dim' data-wallettype='" . $value['wallettype'] . "'>". $value['walletname'] ."</span>".PHP_EOL;
-					echo "<td class='pl'><span class='europrice'>".$value['coinValue']."</span><span class='btcprice dim'>&nbsp;</span></td>".PHP_EOL;
+					echo "<td class='pl'><span class='europrice'></span><span class='btcprice dim'>&nbsp;</span></td>".PHP_EOL;
 					echo "<td class='thchange'><span class='change'></span></td>".PHP_EOL;
 					echo "<td class='pl'>".PHP_EOL;
 					if($value['walletname']=='watch'){
