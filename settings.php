@@ -55,7 +55,7 @@
 
 </script>
 <div class='coinform'>
- <form action="editcoin.php" method="post" id="editcoin">
+ <form action="editcoin.php" method="get" id="editcoin">
 <fieldset>
 	<legend>Add Coin</legend>
 	<label>Symbol</label>
