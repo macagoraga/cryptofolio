@@ -14,7 +14,7 @@ include 'config.php';
 if ($_POST['action'] == 'load'){
     
 
-    $string = file_get_contents($configfile, true);
+    $string = file_get_contents(platformSlashes($configfile), true);
 
     $localdata = json_decode($string, true); 
     $api = json_encode($localdata);

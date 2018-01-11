@@ -26,7 +26,7 @@ if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addc
     $json_data = json_encode($localdata,true);
     
   
-    file_put_contents($configfile, $json_data);
+    file_put_contents(platformSlashes($configfile), $json_data);
     sleep(1);
     header('Location: index.php');
   exit;
