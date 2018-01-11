@@ -18,16 +18,20 @@ Get an overview of all your assets and balances
 - Make lib/data writable
 - Move config.json outside the web directory for security (as your API keys will be stored in here)
 - Make sure config.json is writable with the correct owner:group and make sure the directory and file can be accessed by your webserver
-- Edit config.php and modify the path where `config.json` is located. eg.
+- Edit config.php and modify the path where `config.json` is located. 
 
+#### Example ####
+*linux*
 ```$configfile = '/home/mydir/config.json';```
+*windows* (use forward slashes ufn)
+```$configfile = 'c:/mydir/config.json';```
 
 - Open your browser and navigate to the url: to the m00n!
 - Click the hamburger icon in the right top to:
   - Add coins
   - Your initial investment
   - Set a username/password if desired.
-  - API keys (use read-only keys for security).
+  - Add API keys (use read-only keys for security).
 
 
 Uses d3.js, techanjs for the charts and cryptocompare.com for the API.
