@@ -23,6 +23,7 @@ Get an overview of all your assets and balances
 #### Example ####
 *linux*
 ```$configfile = '/home/mydir/config.json';```
+
 *windows* (use forward slashes ufn)
 ```$configfile = 'c:/mydir/config.json';```
 
