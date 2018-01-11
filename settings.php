@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
      
      $("#watch").click(function(){
@@ -62,13 +61,15 @@
 	<select id='coinlist' name="symbol" placeholder="Select Coin">
 		<option></option>
 		<?php
-
+		function platformSlashes($path) {
+		    return str_replace('/', DIRECTORY_SEPARATOR, $path);
+		}
 		function cmp($a, $b)
 		{
 		    return strcmp($a["FullName"], $b["FullName"]);
 		}
 
-		$coinlist = file_get_contents("lib/data/coinlist.json");
+		$coinlist = file_get_contents(platformSlashes("lib/data/coinlist.json"));
 	    $json = json_decode($coinlist, true);
 	   
 	    usort($json['Data'], "cmp");
@@ -77,12 +78,9 @@
 		}
 	 
 		?>	
-
 	</select>
 	<label>Total</label>
 	<input type='text' value='' name='total' placeholder='0.01' id="total" />
-	
-
 	<label>Wallet Name</label>
 	<input placeholder='Wallet Name' type='text' name='walletname' id="walletname"  />
 	<label><input type="checkbox" id="watch" /> Watch only</label>
@@ -135,9 +133,4 @@
 </fieldset>
 </form>
 </div>
-<script>
-	
-	
-		$("#coinlist").selectize({});
-
-</script>
+<script>$("#coinlist").selectize({});</script>

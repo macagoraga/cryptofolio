@@ -1,4 +1,8 @@
 <?php
+function platformSlashes($path) {
+    return str_replace('/', DIRECTORY_SEPARATOR, $path);
+}
+
 include 'config.php';
 $string = file_get_contents($configfile, true);
 $localdata = json_decode($string, true); 
@@ -6,7 +10,7 @@ $localdata = json_decode($string, true);
 if (isset($_GET['symbol']) && isset($_GET['action']) && $_GET['action'] == 'addcoin' && isset($_GET['symbol']) && $_GET['symbol']!='' && $_GET['total']!='')
 {  
   
-  	$allcoins = file_get_contents('lib/data/coinlist.json');
+  	$allcoins = file_get_contents(platformSlashes('lib/data/coinlist.json'));
     // $allcoins = file_get_contents("https://www.cryptocompare.com/api/data/coinlist/");
     $coinnames = json_decode($allcoins, true);
 
@@ -34,7 +38,7 @@ if ($_GET['action'] == 'remove')
     $getSymbol = strtoupper($_GET['symbol']);
     unset($localdata['coins'][$getSymbol]);
     $json_data = json_encode($localdata);
-    file_put_contents('config.json', $json_data);
+    file_put_contents(platformSlashes($configfile), $json_data);
     sleep(1);
     header('Location: index.php');
     exit;

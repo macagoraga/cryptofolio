@@ -1,4 +1,4 @@
-* { 
+* {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -13,33 +13,66 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/*
-#00ACE9 // blue
-#D43F3F // red
-#6A9A1F
-#F6F6E8
-#404040*/
-#chartcontainer{position:relative;margin: 20px;}
-#chart{margin-top: 0}
-#error,#load{position: absolute;top:225px;width:120px;margin:0 auto;left:0;right:0;font-size: 11px;display: none;text-align: center;}
-#load i{color:#ccd1d5;}
-#chartcontainer,#charthide{display: none;}
-#chart{width:100%;}
-#coinlist{margin-top:10px; }
-.selectize-control{margin: 10px 0;}
-#chartcontainer h1{
+
+#chartcontainer {
+    position: relative;
+    margin: 20px;
+}
+
+#chart {
+    margin-top: 0
+}
+
+#error,
+#load {
+    position: absolute;
+    top: 225px;
+    width: 120px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    display: none;
+    text-align: center;
+}
+
+#load i {
+    color: #ccd1d5;
+}
+
+#chartcontainer,
+#charthide {
+    display: none;
+}
+
+#chart {
+    width: 100%;
+}
+
+#coinlist {
+    margin-top: 10px;
+}
+
+.selectize-control {
+    margin: 10px 0;
+}
+
+#chartcontainer h1 {
     color: #eee;
     font-size: 16px;
     margin: 20px 0 0 50px;
 }
-#chartcontainer h2{
+
+#chartcontainer h2 {
     font-size: 16px;
     margin: 4px 0 0 52px;
 }
-#feed{
-    font-size: 11px;  
+
+#feed {
+    font-size: 11px;
     margin: 12px 0 0 52px;
 }
+
 .header small {
     font-size: 11px;
     color: #65737e
@@ -55,14 +88,13 @@ body {
 
 .header {
 
-   
+
     background-color: #fff;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     margin-bottom: 10px;
-   
 }
 
 .flex-item {
@@ -70,10 +102,8 @@ body {
     border-right: 1px solid #999;
     align-self: center;
     display: block;
-
-
-
 }
+
 .flex-item h1 {
     color: #eee;
     font-size: 16px;
@@ -107,26 +137,36 @@ body {
     order: 0;
     flex: 1 1 auto;
 }
-.flex-item:nth-child(2) .content,.flex-item:nth-child(3) .content,.flex-item:nth-child(4) .content,.flex-item:nth-child(5) .content{
-   height: 46px;
-   padding: 8px 18px;
 
+.flex-item:nth-child(2) .content,
+.flex-item:nth-child(3) .content,
+.flex-item:nth-child(4) .content,
+.flex-item:nth-child(5) .content {
+    height: 46px;
+    padding: 8px 18px;
 }
 
-.flex-item:nth-child(5) .content{
+.flex-item:nth-child(5) .content {
     padding: 14px 14px;
 }
 
 span.currency {
     font-size: 11px;
 }
-span.owned.watch,span.eurototal.watch,span.btctotal.watch{display: none}
-.watchonly{
-    
-    display:block;
+
+span.owned.watch,
+span.eurototal.watch,
+span.btctotal.watch {
+    display: none
+}
+
+.watchonly {
+
+    display: block;
     text-align: right;
     color: #5a5c51;
 }
+
 th {
     color: #999;
     font-weight: normal;
@@ -135,30 +175,78 @@ th {
     text-align: center;
     text-transform: uppercase;
     border-top: 1px solid #5a5c51;
-
 }
-.filter{text-align: right;font-size:11px;margin: 0 0 8px 0;}
-.filter a{;color:#5a5c51;margin:0 4px;}
-.filter a.selected{;color:#ccd1d5;}
+
+.filter {
+    text-align: right;
+    font-size: 11px;
+    margin: 0 0 8px 0;
+}
+
+.filter a {
+    ;
+    color: #5a5c51;
+    margin: 0 4px;
+}
+
+.filter a.selected {
+    ;
+    color: #ccd1d5;
+}
 
 .thcoin {
     text-align: left;
+    width: 50px;
 }
 
-.thprice, .thpl,.thchange {
+.thprice,
+.thpl,
+.thchange {
     text-align: right;
+    width: 120px;
 }
 
-.updownpct, .change {
- 
+.updownpct,
+.change {}
 
+nav {
+    width: 100%;
+    font-size: 11px;
+    float: right;
+    margin: 10px 48px 10px 0;
+    text-align: right;
+    line-height: 20px
 }
-nav{width:100%;font-size: 11px;float: right;margin: 10px 48px 10px 0;text-align: right;line-height: 20px}
-nav a{font-size: 11px;color:#666;padding-bottom: 2px;margin: 0 4px}
-nav a:hover,#feed a:hover{color:#ccd1d5}
-nav a.selected{color:#ccd1d5;}
-#feed span{font-size:11px; margin: 0;display: block;text-transform: uppercase;}
-#feed a{color:#ccd1d5;line-height: 15px;color:#666;}
+
+nav a {
+    font-size: 11px;
+    color: #666;
+    padding-bottom: 2px;
+    margin: 0 4px
+}
+
+nav a:hover,
+#feed a:hover {
+    color: #ccd1d5
+}
+
+nav a.selected {
+    color: #ccd1d5;
+}
+
+#feed span {
+    font-size: 11px;
+    margin: 0;
+    display: block;
+    text-transform: uppercase;
+}
+
+#feed a {
+    color: #ccd1d5;
+    line-height: 15px;
+    color: #666;
+}
+
 tr {
     border-bottom: 1px solid #2f3634;
     cursor: pointer;
@@ -184,7 +272,8 @@ form {
     margin: 0
 }
 
-#euro, #investment {
+#euro,
+#investment {
     display: none;
 }
 
@@ -193,11 +282,13 @@ form {
     color: #5a5c51;
 }
 
-.header span.pctp,#charttickerchange.pctp {
+.header span.pctp,
+#charttickerchange.pctp {
     color: #44be24;
 }
 
-.header span.pctn,#charttickerchange.pctn {
+.header span.pctn,
+#charttickerchange.pctn {
     color: #fb6a44;
 }
 
@@ -219,29 +310,11 @@ form {
     background-color: #943f28;
 }
 
-/*@keyframes p {
-
-    0%     {background-color:#000000;}
-    50.0%  {background-color:#80BD72;} 
-    100.0%  {background-color:#000000;}
-}
-@keyframes n {
-      0%     {background-color:#000000;}
-    50.0%  {background-color:#F1414A;}
-    100.0%  {background-color:#000000;}
-}*/
-
-/*@keyframes pa {
-    0%     {background-color:#000000;}
-    50.0%  {background-color:#F1414A;} /* your chosen 'mid' color 
-    100.0%  {background-color:#000000;}
+.neutral {
+    color: #fff;
+    background-color: #5a5c51;
 }
 
-@keyframes  na {
-    0%     {background-color:#000000;}
-    50.0%  {background-color:#80BD72;}
-    100.0%  {background-color:#000000;}
-}*/
 
 .symbol {
     font-size: 11px;
@@ -251,6 +324,7 @@ form {
 }
 
 td.symbolname {
+    width: 240px;
 }
 
 .symbol img {
@@ -287,34 +361,62 @@ select {
     width: 30px;
 }
 
-input[type='text'],input[type='password']  {
+input[type='text'],
+input[type='password'] {
     font-size: 16px;
     width: 180px;
     background: none;
 }
-#form{display: none;position:absolute;top:47px;left:0;right:0;margin:0 auto;width:500px;background-color: #fff;
-box-shadow: inset 0 7px 3px -7px rgba(0,0,0,0.9);
-border-bottom-right-radius: 12px;
-border-bottom-left-radius: 12px;
-z-index: 20000;}
-.coinform input:disabled{background-color: #eee}
-.coinform fieldset,.apiform fieldset{color:#333;padding: 20px;border:1px solid #999;
-    border-radius:8px;
-    }
-.coinform label, .apiform label {
+
+#form {
+    display: none;
+    position: absolute;
+    top: 47px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 500px;
+    background-color: #fff;
+    box-shadow: inset 0 7px 3px -7px rgba(0, 0, 0, 0.9);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    z-index: 20000;
+}
+
+.coinform input:disabled {
+    background-color: #eee
+}
+
+.coinform fieldset,
+.apiform fieldset {
+    color: #333;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 8px;
+}
+
+.coinform label,
+.apiform label {
     display: block;
     font-size: 11px;
     color: #333;
-    margin:10px 0;
+    margin: 10px 0;
     text-transform: uppercase;
-    
+
     display: block;
     white-space: nowrap;
     overflow: hidden;
-
 }
-.coinform legend,.apiform legend{ font-size: 12px;color:#666; }
-.coinform input[type='text'], .apiform input[type='text'],.apiform input[type='password'] {
+
+.coinform legend,
+.apiform legend {
+    font-size: 12px;
+    color: #666;
+}
+
+.coinform input[type='text'],
+.apiform input[type='text'],
+.apiform input[type='password'] {
     outline: none;
     margin-top: 8px;
     display: block;
@@ -324,10 +426,18 @@ z-index: 20000;}
     border: 1px solid #ccc;
     padding: 4px;
 }
-.coinform h1,.apiform h1{font-size: 16px;margin:20px 0 8px 0px;color:#15232c; }
-.coinform,.apiform {
+
+.coinform h1,
+.apiform h1 {
+    font-size: 16px;
+    margin: 20px 0 8px 0px;
+    color: #15232c;
+}
+
+.coinform,
+.apiform {
     font-family: "Helvetica Neue", Arial;
-    width:100%;
+    width: 100%;
     padding: 10px 20px 20px 20px;
 
     position: relative;
@@ -352,7 +462,11 @@ input[type='text']::-webkit-input-placeholder {
 input[type='text']:focus::-webkit-input-placeholder {
     color: transparent;
 }
-input[type='text']:focus{border: 1px solid #333;outline:none;}
+
+input[type='text']:focus {
+    border: 1px solid #333;
+    outline: none;
+}
 
 
 .datepicker-container {
@@ -365,7 +479,8 @@ a {
     text-decoration: none;
 }
 
-input[type='button'], input[type='submit'] {
+input[type='button'],
+input[type='submit'] {
     cursor: pointer;
     border: 1px solid #15232c;
     padding: 4px 8px;
@@ -378,7 +493,8 @@ input[type='button'], input[type='submit'] {
     -webkit-appearance: none;
 }
 
-.selectors button, .menu button {
+.selectors button,
+.menu button {
     cursor: pointer;
     border: 1px solid #888;
     padding: 2px 8px;
@@ -390,7 +506,9 @@ input[type='button'], input[type='submit'] {
     background-color: #000;
 }
 
-input[type='button']:active, input[type='submit']:active, .selectors button:active {
+input[type='button']:active,
+input[type='submit']:active,
+.selectors button:active {
     color: #ccd1d5;
     border-color: #ccd1d5;
 }
@@ -399,7 +517,8 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
     display: none;
 }
 
-.europrice, .eurototal {
+.europrice,
+.eurototal {
     display: block;
 }
 
@@ -412,25 +531,27 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
 .selectors {
     cursor: default;
 }
-.owned{
+
+.owned {
     font-size: 11px;
 }
+
 .selectors td {
     padding: 20px 0 20px 0;
     text-align: right;
 }
 
-.pl, .europrice, .tdchange {
+.pl,
+.europrice,
+.tdchange {
     vertical-align: middle;
     text-align: right;
 }
 
-.pl {
-    
-}
+.pl {}
 
 #table {
-    width:650px;
+    width: 650px;
     margin: 8px auto 0 auto;
 }
 
@@ -459,28 +580,56 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
 .symbolholder {
     display: block;
 }
-@media screen and (max-width:650px) {
-    html,body{height: 100%; overflow: auto; margin: 0;-webkit-overflow-scrolling: touch;}
-    .header{margin-bottom:0; }
-    .flex-item:nth-child(2) .content,.flex-item:nth-child(3) .content,.flex-item:nth-child(4) .content{
-        padding: 8px 6px;
 
+@media screen and (max-width:650px) {
+    html,
+    body {
+        height: 100%;
+        overflow: auto;
+        margin: 0;
+        -webkit-overflow-scrolling: touch;
     }
-    nav{float: left;text-align: left;margin-left:52px;}
-    .flex-item span,.flex-item small{        font-size: 11px;}
-    .flex-item:nth-child(5) .content{
+    .header {
+        margin-bottom: 0;
+    }
+    .flex-item:nth-child(2) .content,
+    .flex-item:nth-child(3) .content,
+    .flex-item:nth-child(4) .content {
+        padding: 8px 6px;
+    }
+    nav {
+        float: left;
+        text-align: left;
+        margin-left: 52px;
+    }
+    .flex-item span,
+    .flex-item small {
+        font-size: 11px;
+    }
+    .flex-item:nth-child(5) .content {
         padding: 16px 14px;
     }
-    .flex-item:nth-child(1) h1{font-size: 12px; padding: 16px 8px ; }
+    .flex-item:nth-child(1) h1 {
+        font-size: 12px;
+        padding: 16px 8px;
+    }
     #profitPercent {
         font-size: 12px;
     }
 
-    body, td, td.span.change, .graph, .symbol, .paid, .owned, td span.change {
+    body,
+    td,
+    td.span.change,
+    .graph,
+    .symbol,
+    .paid,
+    .owned,
+    td span.change {
         font-size: 14px;
     }
 
-    th, td {
+    th,
+    td {
         padding: 4px;
     }
 
@@ -488,12 +637,17 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
 
         width: 100%;
     }
-    .filter{margin-top: 8px;}
-    #table{
-        width:100%;
+    .filter {
+        margin-top: 8px;
+    }
+    #table {
+        width: 100%;
         margin-top: 0px;
     }
-    #form{width: 100%;top:48px}
+    #form {
+        width: 100%;
+        top: 48px
+    }
     .totals {
         margin: 0 auto 0 auto;
     }
@@ -514,23 +668,13 @@ input[type='button']:active, input[type='submit']:active, .selectors button:acti
         margin: 130px auto 0 auto;
     }
 
-   
-    input[type='button'], input[type='submit'] {
+
+    input[type='button'],
+    input[type='submit'] {
         width: 80px;
     }
 
     .frame {
         margin: 100px auto 0 auto;
     }
-
 }
-
-/* light: #F4F1DE; */
-
-/* red: #E07A5F; */
-
-/* dark: #3D405B; */
-
-/* green: #81B29A; */
-
-/* yellow: #F2CC8F; */

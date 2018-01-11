@@ -1,14 +1,14 @@
 <?php 
-
+include 'functions.php';
 include 'config.php';
 
-$allcoins = file_get_contents('lib/data/coinlist.json');
+$allcoins = file_get_contents(platformSlashes('lib/data/coinlist.json'));
 $coinList = json_decode($allcoins, true);
 
-$string = file_get_contents($configfile, true);
+$string = file_get_contents(platformSlashes($configfile), true);
 $config = json_decode($string, true);
 
-include 'functions.php';
+
 require_auth();
 
 include 'portfolio.php'; 
@@ -47,9 +47,6 @@ $investment = $config['investment']['amount'];
 			<h1>CRYPTOFOLIO</h1>
 		</div>
 	
-		<?php if($investment>0){ ?>
-
-			
 			<div class='flex-item'>
 				<div class='content'>
 					<span id="totalValue"></span><br/>
@@ -59,20 +56,13 @@ $investment = $config['investment']['amount'];
 
 			<div class='flex-item'>
 				<div class='content'>
+				<?php if($investment>0){ ?>
 					<span id="plpct"></span><br/>
 					<small>P/L</small>
+					<?php } ?>
 				</div>
 			</div>
 
-			<?php }	else{ ?>
-
-			<div class='flex-item'>
-			
-				<div class='content'>
-					<span id="totalValue"></span>
-				</div>
-			</div>
-			<?php } ?>
 
 			<div class='flex-item'>
 				<div class='content'>

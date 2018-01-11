@@ -8,6 +8,9 @@ function act_cmp_function($a, $b) {
                 return 0;
         }
 }
+function platformSlashes($path) {
+    return str_replace('/', DIRECTORY_SEPARATOR, $path);
+}
 
 function cache_image($image_url){
     //replace with your cache directory
@@ -52,7 +55,7 @@ function currencyformat($currency)
 
 function symbol_lookup($symbol)
 {
-    $coinlist = file_get_contents("lib/data/coinlist.json");
+    $coinlist = file_get_contents(platformSlashes("lib/data/coinlist.json"));
     $json = json_decode($coinlist, true);
     $imgurl = "https://www.cryptocompare.com".$json['Data'][$symbol]['ImageUrl'];
     
