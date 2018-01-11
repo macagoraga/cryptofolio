@@ -22,9 +22,11 @@ Get an overview of all your assets and balances
 
 #### Example ####
 *linux*
+
 ```$configfile = '/home/mydir/config.json';```
 
 *windows* (use forward slashes ufn)
+
 ```$configfile = 'c:/mydir/config.json';```
 
 - Open your browser and navigate to the url: to the m00n!
