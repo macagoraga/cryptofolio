@@ -2,8 +2,8 @@
 include 'functions.php'; 
 include 'lib/ccxt.php';
 $investment = $config['investment']['amount'];
-$username = $config['username'];
-$password = $config['password'];
+$username = $config['user']['username'];
+$password = $config['user']['password'];
 
 ?>
 

@@ -12,7 +12,7 @@ include 'functions.php';
 // }
 
 
-if ($_GET['action'] == 'load'){
+if (isset($_GET['action']) && $_GET['action'] == 'load'){
     
     $string = file_get_contents(platformSlashes($configfile), true);
     $api = json_decode($string, true); 
@@ -29,7 +29,7 @@ if ($_GET['action'] == 'load'){
     }
 
 }
-if ($_POST['action'] == 'addapi'){
+if (isset($_POST['action']) && $_POST['action'] == 'addapi'){
 
     $exchange = $_POST['exchange'];
     $api =  $_POST['api'];
@@ -46,7 +46,7 @@ if ($_POST['action'] == 'addapi'){
 }
 
 
-if ($_POST['action'] == 'removeapi'){
+if (isset($_POST['action']) && $_POST['action'] == 'removeapi'){
     
     $exchange = $_POST['exchange'];
 
