@@ -84,8 +84,8 @@ function addApi(){
 	else{
 
 		var e = $("#exchange").val()
-		var api = $("#secret").val()
-		var secret = $("#api").val()
+		var api = $("#api").val()
+		var secret = $("#secret").val()
 		console.log('posting:'+e+' api:'+api+ ' secret:'+ secret)
 		$.post('editapi.php',{ action : 'addapi', exchange : e, api : api, secret : secret },function(){
 			$("#api,#secret").val("")
@@ -162,10 +162,10 @@ loadapis();
 	</select>
 	
 	<label>API KEY</label>
-	<input type="text" name="" id="api">
+	<input type="text" name="api" id="api">
 	
 	<label>SECRET</label>
-	<input type="text" name="" id="secret"><br/>
+	<input type="text" name="secret" id="secret"><br/>
 	
 	<input type="button" id="addapi" value="Add API" onclick="addApi()" /><br/>
 	
