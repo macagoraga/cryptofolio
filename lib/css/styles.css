@@ -40,6 +40,12 @@ body {
     color: #ccd1d5;
 }
 
+#activeexchanges{width:100%;min-height: 40px;}
+.exchange{list-style: none;padding:0;margin:0;}
+.exchange li{float: left;margin: 3px;border:1px solid #999;color: #000;font-size:12px;padding:2px 8px 2px 2px;-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;cursor: pointer;}
+.exchange li i{margin: 0 4px;color: #900}
 #chartcontainer,
 #charthide {
     display: none;

@@ -1,49 +1,74 @@
 <?php
-function platformSlashes($path) {
-    return str_replace('/', DIRECTORY_SEPARATOR, $path);
-}
-if (empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] != "XMLHttpRequest") {
-    if (realpath($_SERVER["SCRIPT_FILENAME"]) == __FILE__) { // direct access denied
-         header('HTTP/1.0 403 Forbidden');
-        exit('Forbidden');
+
+include 'functions.php';
+
+
+// if (empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && $_SERVER["HTTP_X_REQUESTED_WITH"] != "XMLHttpRequest") {
+//     if (realpath($_SERVER["SCRIPT_FILENAME"]) == __FILE__) { // direct access denied
+//          header('HTTP/1.0 403 Forbidden');
+//         exit('Forbidden');
        
+//     }
+// }
+
+
+if ($_GET['action'] == 'load'){
+    
+    $string = file_get_contents(platformSlashes($configfile), true);
+    $api = json_decode($string, true); 
+
+    if(sizeof($api['api'])>0){
+        echo "<ul class='exchange'>";
+    foreach ($api['api'] as $key => $value) {
+       echo '<li onclick="deleteApi(\''.$key.'\')"><i class="fa fa-minus-circle" aria-hidden="true"></i>'.$key.'</li>';
     }
+     echo "</ul>";
+    }
+    else{
+        echo "-";
+    }
+
+}
+if ($_POST['action'] == 'addapi'){
+
+    $exchange = $_POST['exchange'];
+    $api =  $_POST['api'];
+    $secret =  $_POST['secret'];
+    
+    $string = file_get_contents(platformSlashes($configfile), true);
+    $localdata = json_decode($string, true); 
+    
+    $localdata['api'][$exchange]['api'] = $api ;
+    $localdata['api'][$exchange]['secret'] = $secret ;
+
+    $json_data = json_encode($localdata,true);
+    file_put_contents(platformSlashes($configfile), $json_data);
 }
 
-include 'config.php';
-if ($_POST['action'] == 'load'){
+
+if ($_POST['action'] == 'removeapi'){
     
+    $exchange = $_POST['exchange'];
 
     $string = file_get_contents(platformSlashes($configfile), true);
-
     $localdata = json_decode($string, true); 
-    $api = json_encode($localdata);
-   print_r($api);
-}
+    
+    unset($localdata['api'][$exchange]);
 
+    $json_data = json_encode($localdata,true);
+    file_put_contents(platformSlashes($configfile), $json_data);
+}
 
 if (isset($_POST['action']) && $_POST['action'] == 'save'){
    
     $string = file_get_contents(platformSlashes($configfile), true);
     $localdata = json_decode($string, true); 
 
-    unset($localdata['api']);
+   
     unset($localdata['investment']);
     unset($localdata['user']);
     $localdata['user']['username']=trim($_POST['username']);
     $localdata['user']['password']=trim($_POST['password']);
-    
-    $localdata['api']['bittrex']['api']=trim($_POST['bittrexapi']);
-    $localdata['api']['bittrex']['secret']=trim($_POST['bittrexsecret']);
-    $localdata['api']['kraken']['api']=trim($_POST['krakenapi']);
-    $localdata['api']['kraken']['secret']=trim($_POST['krakensecret']);
-    $localdata['api']['poloniex']['api']=trim($_POST['poloniexapi']);
-    $localdata['api']['poloniex']['secret']=trim($_POST['poloniexsecret']);
-    $localdata['api']['binance']['api']=trim($_POST['binanceapi']);
-    $localdata['api']['binance']['secret']=trim($_POST['binancesecret']);
-    $localdata['api']['kucoin']['api']=trim($_POST['kucoinapi']);
-    $localdata['api']['kucoin']['secret']=trim($_POST['kucoinsecret']);
-
     $localdata['investment']['amount']=trim($_POST['investment']);
     
     $json_data = json_encode($localdata,true);
@@ -53,6 +78,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'save'){
     echo "ok";
     exit;
 }
+
+
 
 
 ?>

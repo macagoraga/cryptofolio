@@ -1,13 +1,8 @@
 <?php 
 include 'functions.php';
-include 'config.php';
 
 $allcoins = file_get_contents(platformSlashes('lib/data/coinlist.json'));
 $coinList = json_decode($allcoins, true);
-
-$string = file_get_contents(platformSlashes($configfile), true);
-$config = json_decode($string, true);
-
 
 require_auth();
 

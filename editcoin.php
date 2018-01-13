@@ -1,9 +1,6 @@
 <?php
-function platformSlashes($path) {
-    return str_replace('/', DIRECTORY_SEPARATOR, $path);
-}
+include 'functions.php';
 
-include 'config.php';
 $string = file_get_contents($configfile, true);
 $localdata = json_decode($string, true); 
 

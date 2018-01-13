@@ -1,4 +1,8 @@
 <?php
+include 'config.php';
+$string = file_get_contents(platformSlashes($configfile), true);
+$config = json_decode($string, true);
+
 function act_cmp_function($a, $b) {
         if ($a['name'] > $b['name']) {
                 return 1;

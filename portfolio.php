@@ -23,20 +23,25 @@ if(isset($config['coins']) && sizeof($config['coins'])>0){
 			if($value['secret']!=''){
 			
 				$c = '\ccxt\\'.$key;
+				try {
 				$out = new $c ( array ( 'apiKey' => $config['api'][$key]['api'], 'secret' => $config['api'][$key]['secret'] )); 
 				
-				foreach ($out->fetch_balance()['total'] as $k => $v) {
+					foreach ($out->fetch_balance()['total'] as $k => $v) {
+						
+						if($v>0.0009){
+							$coindata['coins'][$key][$k]['wallettype'] = 'exchange';
+							$coindata['coins'][$key][$k]['walletname'] = $key;
+					    	$coindata['coins'][$key][$k]['name'] = $coinList['Data'][$k]['CoinName'];
+					    	$coindata['coins'][$key][$k]['fullname'] = $coinList['Data'][$k]['FullName'];
+					    	$coindata['coins'][$key][$k]['owned'] = $v;
+				    	}	
 					
-					if($v>0.0009){
-						$coindata['coins'][$key][$k]['wallettype'] = 'exchange';
-						$coindata['coins'][$key][$k]['walletname'] = $key;
-				    	$coindata['coins'][$key][$k]['name'] = $coinList['Data'][$k]['CoinName'];
-				    	$coindata['coins'][$key][$k]['fullname'] = $coinList['Data'][$k]['FullName'];
-				    	$coindata['coins'][$key][$k]['owned'] = $v;
-			    	}	
-				
+					}
 				}
+				catch (Exception $e) {
+        		echo "<div style='width:100%;padding:4px;background-color: #900;color: #fff; font-size:11px'>Error: ".  $e->getMessage () ."</div>";
 			
+				}
 			}
 		}
 	}
