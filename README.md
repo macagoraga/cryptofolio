@@ -4,9 +4,10 @@ Get an overview of all your assets and balances
 
 ### Requirements
 - Webserver that can serve PHP
+- Webserver must be synchronized with NTP servers (to avoid timing issues when connecting to API's) 
 
 ### Features
-- API integration with Kraken, Bittrex, Binance, Kucoin and Poloniex
+- API integration with many exchanges using [ccxt](https://github.com/ccxt/ccxt) integration.
 - Retrieves your balances and calculates your total portfolio value
 - Add coins manually (that are living in a wallet) or to add them to the watchlist
 - Prices are market average and are calculated in EUR
@@ -37,7 +38,7 @@ Get an overview of all your assets and balances
   - Add API keys (use read-only keys for security).
 
 
-Uses d3.js, techanjs for the charts and cryptocompare.com for the API.
+Uses d3.js, techanjs for the charts, ccxt and cryptocompare.com for the API.
 
 ![example](lib/data/example.jpg)
 
