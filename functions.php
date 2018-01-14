@@ -63,11 +63,21 @@ function currencyformat($currency)
 
 function symbol_lookup($symbol)
 {
+    
     $coinlist = file_get_contents(platformSlashes("lib/data/coinlist.json"));
     $json = json_decode($coinlist, true);
-    $imgurl = "https://www.cryptocompare.com".$json['Data'][$symbol]['ImageUrl'];
+    if(isset($json['Data'][$symbol]['ImageUrl'])){
+        
+        $imgurl = "https://www.cryptocompare.com".$json['Data'][$symbol]['ImageUrl'];
+        return cache_image($imgurl);
     
-    return cache_image($imgurl);
+    }
+    else{
+        
+        $imgurl = "lib/data/error.png";
+        return $imgurl;        
+    
+    }
 }
 
 function price_lookup($symbol, $currency)

@@ -25,11 +25,21 @@ if(isset($config['api']) && sizeof($config['api'])>0){
 			
 				foreach ($out->fetch_balance()['total'] as $k => $v) {
 					
-					if($v>0.0009){
+					if($v>0){
+
 						$coindata['coins'][$key][$k]['wallettype'] = 'exchange';
 						$coindata['coins'][$key][$k]['walletname'] = $key;
-				    	$coindata['coins'][$key][$k]['name'] = $coinList['Data'][$k]['CoinName'];
-				    	$coindata['coins'][$key][$k]['fullname'] = $coinList['Data'][$k]['FullName'];
+						
+						if( isset($coinList['Data'][$k]['CoinName']) ){
+				    		$coindata['coins'][$key][$k]['name'] = $coinList['Data'][$k]['CoinName'];
+				    		$coindata['coins'][$key][$k]['fullname'] = $coinList['Data'][$k]['FullName'];
+				    	}
+				    	else{
+							$coindata['coins'][$key][$k]['name'] = $k;
+				    		$coindata['coins'][$key][$k]['fullname'] = $k.' - Unknown coin';
+				    	
+
+				    	}
 				    	$coindata['coins'][$key][$k]['owned'] = $v;
 			    	}	
 				
