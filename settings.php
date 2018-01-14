@@ -47,7 +47,6 @@ if($("#watch").val()=='watch'){
 	
 	}else{
 		 $("#walletname,#total").prop("disabled",false)
-		// var str = $("#editcoin").serialize();
 		 $("#editcoin").submit()
 	}
 
@@ -68,7 +67,6 @@ $("#saveapi").click(function(e){
 function deleteApi(e){
     var r = confirm("Remove "+e+" from API's ?");
     if (r == true) {
-        //console.log('editapi.php?action=removeapi&api='+e)
     	$.post('editapi.php',{ action : 'removeapi', exchange : e },function(){
     		loadapis()
     	})
@@ -154,7 +152,7 @@ loadapis();
 		<?php 
 
 		$exchanges = \ccxt\Exchange::$exchanges;
-	   	foreach ($exchanges as $value) { // This will search in the 2 jsons
+	   	foreach ($exchanges as $value) { 
 		    echo "<option value='".$value."'>".$value ."</option>";	
 		}
 	 

@@ -6,9 +6,8 @@ $coinList = json_decode($allcoins, true);
 
 require_auth();
 
-include 'portfolio.php'; 
+require_once 'portfolio.php'; 
 $investment = $config['investment']['amount'];
-
 
 ?>
 <html>
@@ -30,8 +29,6 @@ $investment = $config['investment']['amount'];
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js"></script>
  		<script src="lib/js/streamer_utilities.js"></script>
 		<script src="lib/js/script.js"></script>
-
-
 	</head>
 <body>
 <div id="euro"></div>
@@ -83,8 +80,6 @@ $investment = $config['investment']['amount'];
 				<th class='thchange'>24HR</th>
 				<th class='thpl'>VALUE (EUR)</th>
 			</tr>
-			
-
 			<?php
 			if(isset($coins) && sizeof($coins)>0){
 

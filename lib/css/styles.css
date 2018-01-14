@@ -452,7 +452,7 @@ input[type='password'] {
 .apiform {
     display: none;
 }
-
+.item{display: none}
 
 tr.info td {
     padding: 8px 0 8px 0;
