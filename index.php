@@ -84,7 +84,7 @@ $investment = $config['investment']['amount'];
 			if(isset($coins) && sizeof($coins)>0){
 
 				foreach ($coins as $symbol => $value) {
-				
+					if($value['symbol']!='IGNIS'){
 					echo "<tr class='". $value['symbol'] ." item' data-coin='". $value['symbol'] ."' >".PHP_EOL;
 					echo "<td class='symbol'>".PHP_EOL;
 					if($value['wallettype']!='exchange'){
@@ -113,6 +113,8 @@ $investment = $config['investment']['amount'];
 					echo "</td>".PHP_EOL;
 					echo "</tr>".PHP_EOL;
 				}
+				}
+
 			}
 			else{
 				echo "<tr><td colspan='5'>No coins added.<td></tr>";

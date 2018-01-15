@@ -59,11 +59,11 @@ if(isset($coindata) && sizeof($coindata)>0){
 foreach ($coindata['coins'] as $key => $val) {
     
     foreach ($val as $i => $v) {
-    if($v['owned']>0.001 || $v['walletname']=='watch'){
+    
 	    $output[] = array("symbol"=>$i, "name"=>$v['name'], "wallettype"=>$v['wallettype'], "walletname"=>$v['walletname'], "coinsOwned"=>$v['owned'], "fullName"=>$v['fullname'], "image"=>symbol_lookup($i));
 	     $coins = $output;
 	    }
-    }
+    
 
 }
 
